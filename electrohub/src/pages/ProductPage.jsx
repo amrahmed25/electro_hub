@@ -23,7 +23,6 @@ const CreativeProductPage = () => {
       note: "Similar performance",
       img: "https://images.unsplash.com/photo-1608564697171-2ed891c32c44?auto=format&fit=crop&w=150&q=80"
     },
-    asdsa
     {
       name: "ESP32 DevKit",
       price: "$12.90",
