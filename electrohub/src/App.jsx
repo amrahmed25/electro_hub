@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Components from "./pages/Components";
 import Datasheets from "./pages/Datasheets";
@@ -8,14 +9,18 @@ import ProjectGenerator from "./pages/ProjectGenerator";
 import ShoppingCart from "./pages/ShoppingCart";
 import UserDashboard from "./pages/UserDashboard";
 import Social from "./pages/Social";
+import Store from "./pages/Store";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} />
+
+      <Route path="/home" element={<Home />} />
       <Route path="/components" element={<Components />} />
       <Route path="/datasheets" element={<Datasheets />} />
       <Route path="/logic" element={<LogicSimulator />} />
+      <Route path="/store" element={<Store />} />
       <Route path="/project-generator" element={<ProjectGenerator />} />
       <Route path="/shopping-cart" element={<ShoppingCart />} />
       <Route path="/user-dashboard" element={<UserDashboard />} />
