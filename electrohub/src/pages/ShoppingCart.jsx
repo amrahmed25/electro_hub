@@ -1,47 +1,8 @@
-import { useState } from "react";
 import Header from "./Header";
-
-const initialItems = [
-  {
-    id: 1,
-    name: "Arduino Uno R3",
-    image: "/images/Arduino Uno R3.png",
-    price: 10.0,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: "Ultrasonic Sensor HC-SR04",
-    image: "/images/Ultrasonic Sensor HC-SR04.png",
-    price: 5.0,
-    quantity: 2,
-  },
-];
+import { useCart } from "../CartContext";
 
 function ShoppingCart() {
-  const [items, setItems] = useState(initialItems);
-
-  const increaseQty = (id) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQty = (id) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  const { items, increaseQty, decreaseQty, removeItem } = useCart();
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -53,10 +14,8 @@ function ShoppingCart() {
 
   return (
     <div className="min-h-screen bg-[#0b132b] text-white font-sans">
-      
-      {/* تم إضافة الـ Header هنا في أعلى الصفحة */}
       <Header />
-      
+
       <div className="pt-[70px] pl-10 pr-10 pb-10">
         <h2 className="text-white mb-6 text-2xl font-semibold">
           CIRCUITCORE | Shopping Cart
@@ -65,8 +24,9 @@ function ShoppingCart() {
         <div className="flex gap-5 items-start">
           {/* Cart items */}
           <div className="flex-[3]">
-            <div className="grid grid-cols-[80px_1fr_150px_100px_90px] items-center gap-2.5 text-center bg-[#20212c] rounded-xl p-4 mb-2.5 font-bold">
+            <div className="grid grid-cols-[80px_1fr_150px_150px_100px_90px] items-center gap-2.5 text-center bg-[#20212c] rounded-xl p-4 mb-2.5 font-bold">
               <div>Product Image</div>
+              <div>Component</div>
               <div>Package</div>
               <div>Quantity</div>
               <div>Price</div>
@@ -76,9 +36,9 @@ function ShoppingCart() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-[80px_1fr_150px_100px_90px] items-center gap-2.5 text-center bg-[#20212c] rounded-xl p-4 mb-2.5"
+                className="grid grid-cols-[80px_1fr_150px_150px_100px_90px] items-center gap-2.5 text-center bg-[#20212c] rounded-xl p-4 mb-2.5"
               >
-                <div className="w-[60px] h-[60px] bg-[#3a3d4d] rounded-lg flex justify-center items-center mx-auto">
+                <div className="w-[60px] h-[60px] bg-[#3a3d4d] rounded-lg flex justify-center items-center mx-auto overflow-hidden">
                   {item.image ? (
                     <img
                       src={item.image}
@@ -89,7 +49,20 @@ function ShoppingCart() {
                     "Image"
                   )}
                 </div>
-                <div>{item.name}</div>
+
+                <div className="text-left">
+                  <div className="font-semibold">{item.name}</div>
+                  {item.manufacturer && (
+                    <div className="text-xs text-gray-400">
+                      {item.manufacturer}
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-sm text-gray-300">
+                  {item.package || "-"}
+                </div>
+
                 <div className="flex justify-center items-center gap-2.5">
                   <button
                     onClick={() => decreaseQty(item.id)}
@@ -107,7 +80,9 @@ function ShoppingCart() {
                     +
                   </button>
                 </div>
+
                 <div>${item.price.toFixed(2)}</div>
+
                 <div
                   onClick={() => removeItem(item.id)}
                   className="text-[#ff5d5d] cursor-pointer font-bold"
