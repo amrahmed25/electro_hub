@@ -1,8 +1,11 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { Search, ShoppingCart, ChevronRight, FileText, ExternalLink, Minus, Plus } from 'lucide-react';
-// استيراد الداتا المحلية اللي حطينا فيها أسعار السوق المصري والـ datasheets
+// استيراد الداتا المحلية اللي فيها أسعار السوق المصري
 import componentsData from '../data/components.json';
+
+// استدعاء الهيدر باسم الملف الجديد
+import Header from './modified_header'; 
 
 export default function Store() {
   const [components, setComponents] = useState(componentsData);
@@ -32,7 +35,6 @@ export default function Store() {
       const currentQty = prev[id] || 1;
       let newQty = currentQty + delta;
       
-      // مفيش كمية بالسالب، ومينفعش يطلب أكتر من اللي في المخزن
       if (newQty < 1) newQty = 1;
       if (newQty > maxStock) newQty = maxStock;
       
@@ -41,10 +43,10 @@ export default function Store() {
   };
 
   const handleAddToCart = (id, stock) => {
-    if (stock === 0) return; // لو مفيش مخزون متعملش حاجة
+    if (stock === 0) return; 
     const qtyToAdd = quantities[id] || 1;
     setCartCount(prev => prev + qtyToAdd);
-    setQuantities(prev => ({ ...prev, [id]: 1 })); // تصفير العداد بعد الإضافة
+    setQuantities(prev => ({ ...prev, [id]: 1 })); 
   };
 
   return (
@@ -54,44 +56,12 @@ export default function Store() {
       <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         
         {/* ================= Navbar ================= */}
-        <nav className="flex items-center justify-between px-8 py-5 border-b border-gray-800/50 bg-transparent">
-          <div className="flex items-center gap-0 cursor-pointer group">
-            <img src="/images/logo.png" alt="CircuitCore" className="h-8 w-auto object-contain group-hover:rotate-12 transition-transform duration-300" />
-            <img src="/images/name.png" alt="CircuitCore Text" className="h-8 w-auto object-contain mt-1 hidden sm:block" />
-          </div>
-
-          <div className="hidden xl:flex items-center gap-9 text-[13px] font-medium text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Home</a>
-            <a href="#" className="relative text-blue-300 font-semibold drop-shadow-[0_0_8px_rgba(96,165,250,0.8)] pb-1">
-              Components Library
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,1)]"></span>
-            </a>
-            <a href="#" className="hover:text-white transition-colors">Datasheet Library</a>
-            <a href="#" className="hover:text-white transition-colors">Logic Simulator</a>
-            <a href="#" className="hover:text-white transition-colors">Project Generator</a>
-            <a href="#" className="hover:text-white transition-colors">Shopping Cart</a>
-            <a href="#" className="hover:text-white transition-colors">User Dashboard</a>
-            <a href="#" className="hover:text-white transition-colors">Social</a>
-          </div>
-
-          <div className="flex items-center gap-6 text-gray-400">
-            <button className="hover:text-white transition-colors"><Search size={18} /></button>
-            <button className="hover:text-white transition-colors relative">
-              <ShoppingCart size={18} />
-              {cartCount > 0 && (
-                <span className="absolute -top-2.5 -right-2.5 bg-red-500 text-white text-[10px] font-extrabold rounded-full h-4 w-4 flex items-center justify-center shadow-[0_0_10px_rgba(239,68,68,0.5)]">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-            <div className="h-8 w-8 rounded-full overflow-hidden cursor-pointer border border-transparent hover:border-gray-500 transition-colors">
-              <img src="https://i.pravatar.cc/150?img=11" alt="User" className="w-full h-full object-cover" />
-            </div>
-          </div>
-        </nav>
+        {/* استدعاء المكون الجديد وتمرير عداد السلة له */}
+        <Header cartCount={cartCount} />
 
         {/* ================= Store Content ================= */}
-        <div className="flex-1 overflow-y-auto p-6">
+        {/* mt-16 لضمان عدم تداخل المحتوى مع الهيدر الثابت أعلى الشاشة */}
+        <div className="flex-1 overflow-y-auto p-6 mt-16">
           
           {/* Search Bar */}
           <div className="max-w-4xl mx-auto mb-10 mt-4 flex items-center bg-[#0d1323]/80 backdrop-blur-md border border-gray-700/50 rounded-full p-1.5 shadow-2xl">
@@ -110,7 +80,7 @@ export default function Store() {
 
           <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
             
-            {/* Sidebar Filters (ثابت عند النزول) */}
+            {/* Sidebar Filters */}
             <aside className="w-full lg:w-1/4 bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-2xl border border-gray-800/60 shadow-2xl flex flex-col gap-6 lg:sticky lg:top-6 h-fit">
               <div>
                 <h2 className="text-[11px] font-extrabold tracking-widest text-gray-400 mb-4 uppercase">Filters & Categories</h2>
@@ -160,7 +130,6 @@ export default function Store() {
                     
                     <p className="text-xs text-gray-500 mb-6 h-8 line-clamp-2 leading-relaxed" title={item.description}>{item.description}</p>
                     
-                    {/* أزرار الإجراءات السريعة (Datasheet المربوط باللينك + More Details) */}
                     <div className="grid grid-cols-2 gap-1 border-b border-gray-800/60 pb-4 mb-4 text-center">
                       <a 
                         href={item.datasheet} 
