@@ -5,7 +5,7 @@ import { Search, ShoppingCart, ChevronRight, FileText, ExternalLink, Minus, Plus
 import componentsData from '../data/components.json';
 
 // استدعاء الهيدر باسم الملف الجديد
-import Header from './modified_header'; 
+import Header from './Header'; 
 
 export default function Store() {
   const [components, setComponents] = useState(componentsData);
