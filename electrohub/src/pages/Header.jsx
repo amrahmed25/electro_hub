@@ -41,7 +41,7 @@ const Header = () => {
               to="/datasheets"
               className="text-slate-400 hover:text-white transition-colors duration-200"
             >
-              Datasheet Library
+              store
             </NavLink>
 
             <NavLink
@@ -152,7 +152,7 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
             className="block px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800/30"
           >
-            Datasheet Library
+            store
           </NavLink>
 
           <NavLink

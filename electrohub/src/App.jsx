@@ -17,16 +17,16 @@ function App() {
     <CartProvider>
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/components" element={<Components />} />
         <Route path="/datasheets" element={<Datasheets />} />
         <Route path="/logic" element={<LogicSimulator />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/project-generator" element={<ProjectGenerator />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/social" element={<Social />} />
+        <Route path="/project-generator" element={<ProjectGenerator />} />
       </Routes>
     </CartProvider>
   );

@@ -21,6 +21,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { generateProjectFromIdea } from "./geminiService";
+import Header from "./Header";
 
 // ---------------------------------------------------------------------------
 // Category -> icon mapping. Falls back to a generic chip icon.
@@ -143,6 +144,7 @@ export default function AIProjectGenerator() {
 
   return (
     <div className="min-h-screen w-full bg-[#04060c] text-slate-200" style={{ fontFamily: "Inter, sans-serif" }}>
+      <Header />
       <style>{`
         @keyframes pulseGlow { 0%,100% { opacity: .55 } 50% { opacity: 1 } }
         @keyframes floatUp { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
