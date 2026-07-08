@@ -1,11 +1,11 @@
 import { useState, useMemo } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
-import { Search, ShoppingCart, ChevronRight, FileText, ExternalLink, Minus, Plus } from 'lucide-react';
-// استيراد الداتا المحلية اللي فيها أسعار السوق المصري
+import { useNavigate } from 'react-router-dom';
+import { Search, ChevronRight, FileText, ExternalLink, Minus, Plus } from 'lucide-react';
 import componentsData from '../data/components.json';
-
-// استدعاء الهيدر باسم الملف الجديد
 import Header from './Header'; 
+
+// 1. استدعاء الـ Context بتاع صاحبك
+import { useCart } from '../CartContext'; 
 
 export default function Store() {
   const [components, setComponents] = useState(componentsData);
@@ -13,16 +13,16 @@ export default function Store() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const navigate = useNavigate();
   
-  const [cartCount, setCartCount] = useState(0);
   const [quantities, setQuantities] = useState({});
 
-  // استخراج كل الأقسام الموجودة في الداتا بشكل ديناميكي (بدون تكرار)
+  // 2. سحبنا الدالة بالاسم الحقيقي بتاعها (addItem)
+  const { addItem } = useCart(); 
+
   const categories = useMemo(() => {
     const uniqueCategories = new Set(components.map(item => item.category));
     return ['All', ...Array.from(uniqueCategories)];
   }, [components]);
 
-  // دالة الفلترة (بحث + أقسام)
   const filteredComponents = components.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           item.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -34,19 +34,26 @@ export default function Store() {
     setQuantities(prev => {
       const currentQty = prev[id] || 1;
       let newQty = currentQty + delta;
-      
       if (newQty < 1) newQty = 1;
       if (newQty > maxStock) newQty = maxStock;
-      
       return { ...prev, [id]: newQty };
     });
   };
 
-  const handleAddToCart = (id, stock) => {
-    if (stock === 0) return; 
-    const qtyToAdd = quantities[id] || 1;
-    setCartCount(prev => prev + qtyToAdd);
-    setQuantities(prev => ({ ...prev, [id]: 1 })); 
+  // 3. التعديل عشان يشتغل مع كود صاحبك بالظبط
+  const handleAddToCart = (item) => {
+    if (item.stock === 0) return; 
+    
+    // بنشوف اليوزر عايز يضيف كام قطعة
+    const qtyToAdd = quantities[item.id] || 1;
+    
+    // بما إن دالة صاحبك بتزود 1 بس، هنعملها Loop على قد العدد اللي اليوزر اختاره
+    for (let i = 0; i < qtyToAdd; i++) {
+      addItem(item);
+    }
+
+    // تصفير العداد بعد الإضافة
+    setQuantities(prev => ({ ...prev, [item.id]: 1 })); 
   };
 
   return (
@@ -55,15 +62,9 @@ export default function Store() {
 
       <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         
-        {/* ================= Navbar ================= */}
-        {/* استدعاء المكون الجديد وتمرير عداد السلة له */}
-        <Header cartCount={cartCount} />
+        <Header />
 
-        {/* ================= Store Content ================= */}
-        {/* mt-16 لضمان عدم تداخل المحتوى مع الهيدر الثابت أعلى الشاشة */}
         <div className="flex-1 overflow-y-auto p-6 mt-16">
-          
-          {/* Search Bar */}
           <div className="max-w-4xl mx-auto mb-10 mt-4 flex items-center bg-[#0d1323]/80 backdrop-blur-md border border-gray-700/50 rounded-full p-1.5 shadow-2xl">
             <div className="pl-4 pr-2 text-gray-400"><Search size={20} /></div>
             <input 
@@ -79,8 +80,6 @@ export default function Store() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
-            
-            {/* Sidebar Filters */}
             <aside className="w-full lg:w-1/4 bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-2xl border border-gray-800/60 shadow-2xl flex flex-col gap-6 lg:sticky lg:top-6 h-fit">
               <div>
                 <h2 className="text-[11px] font-extrabold tracking-widest text-gray-400 mb-4 uppercase">Filters & Categories</h2>
@@ -89,16 +88,9 @@ export default function Store() {
                     <li 
                       key={category}
                       onClick={() => setSelectedCategory(category)} 
-                      className={`cursor-pointer hover:text-blue-500 transition-colors flex items-center gap-2 ${
-                        selectedCategory === category ? 'text-blue-400 font-bold' : ''
-                      } ${category !== 'All' ? 'pl-2' : ''}`}
+                      className={`cursor-pointer hover:text-blue-500 transition-colors flex items-center gap-2 ${selectedCategory === category ? 'text-blue-400 font-bold' : ''} ${category !== 'All' ? 'pl-2' : ''}`}
                     >
-                      {category !== 'All' && (
-                        <ChevronRight 
-                          size={12} 
-                          className={selectedCategory === category ? 'text-blue-400' : 'text-gray-600'} 
-                        />
-                      )}
+                      {category !== 'All' && <ChevronRight size={12} className={selectedCategory === category ? 'text-blue-400' : 'text-gray-600'} />}
                       {category === 'All' ? 'All Components' : category}
                     </li>
                   ))}
@@ -106,7 +98,6 @@ export default function Store() {
               </div>
             </aside>
 
-            {/* Main Grid */}
             <main className="w-full lg:w-3/4">
               <h2 className="text-lg font-bold mb-6 text-white tracking-wide">
                 Browsing: {selectedCategory === 'All' ? 'All Components' : selectedCategory} ({filteredComponents.length})
@@ -131,18 +122,10 @@ export default function Store() {
                     <p className="text-xs text-gray-500 mb-6 h-8 line-clamp-2 leading-relaxed" title={item.description}>{item.description}</p>
                     
                     <div className="grid grid-cols-2 gap-1 border-b border-gray-800/60 pb-4 mb-4 text-center">
-                      <a 
-                        href={item.datasheet} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn cursor-pointer"
-                      >
+                      <a href={item.datasheet} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn cursor-pointer">
                         <FileText size={14} /> <span className="whitespace-nowrap">Datasheet</span>
                       </a>
-                      <button 
-                        onClick={() => navigate(`/product/${item.id}`)}
-                        className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn"
-                      >
+                      <button onClick={() => navigate(`/product/${item.id}`)} className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn">
                         <ExternalLink size={14} /> <span className="whitespace-nowrap">More Details</span>
                       </button>
                     </div>
@@ -169,7 +152,7 @@ export default function Store() {
                         <button onClick={() => handleQuantityChange(item.id, 1, item.stock)} className="px-2.5 text-gray-500 hover:text-white hover:bg-gray-800 transition-colors h-full flex items-center"><Plus size={12} /></button>
                       </div>
                       <button 
-                        onClick={() => handleAddToCart(item.id, item.stock)} 
+                        onClick={() => handleAddToCart(item)} 
                         disabled={item.stock === 0}
                         className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all h-10 flex items-center justify-center ${item.stock > 0 ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.2)] active:scale-95' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
                       >
