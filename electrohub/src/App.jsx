@@ -17,7 +17,7 @@ function App() {
     <CartProvider>
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/components" element={<Components />} />
         <Route path="/datasheets" element={<Datasheets />} />
