@@ -177,7 +177,7 @@ export default function AIProjectGenerator() {
         <header className="fade-up mb-10 text-center">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan-300">
             <Wand2 className="h-3.5 w-3.5" />
-            ELECTROHUB · AI PROJECT GENERATOR
+            CIRCUITCORE · AI PROJECT GENERATOR
           </div>
           <h1
             className="grad-text mb-4 text-4xl font-extrabold tracking-tight sm:text-6xl"
