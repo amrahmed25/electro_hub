@@ -10,12 +10,12 @@ import ShoppingCart from "./pages/ShoppingCart";
 import UserDashboard from "./pages/UserDashboard";
 import Social from "./pages/Social";
 import Store from "./pages/Store";
-// import Header from "./pages/Header";
+// استدعاء الصفحة بالاسم بتاعك
+import ProductPage from "./pages/ProductPage"; 
 
 function App() {
   return (
     <CartProvider>
-      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
@@ -27,6 +27,8 @@ function App() {
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/social" element={<Social />} />
         <Route path="/project-generator" element={<ProjectGenerator />} />
+        {/* الراوت بالاسم الصح */}
+        <Route path="/product/:id" element={<ProductPage />} />
       </Routes>
     </CartProvider>
   );

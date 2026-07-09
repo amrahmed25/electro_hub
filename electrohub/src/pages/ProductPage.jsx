@@ -1,237 +1,208 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import componentsData from '../data/components.json';
+import { useCart } from '../CartContext';
+import Header from './Header'; 
+import { ArrowLeft, ZoomIn, ChevronRight, Plus, Minus, Cpu, Activity, X } from 'lucide-react';
 
-const CreativeProductPage = () => {
+const ProductPage = () => {
+  const { id } = useParams(); 
+  const navigate = useNavigate();
+  const { addItem } = useCart();
+  
   const [quantity, setQuantity] = useState(1);
-  const [activeThumb, setActiveThumb] = useState(1);
+  const [isZoomed, setIsZoomed] = useState(false); 
 
-  const specs = [
-    { label: "Microcontroller", value: "ATmega328P" },
-    { label: "Operating Voltage", value: "5V" },
-    { label: "Input Voltage (recommended)", value: "7-12V" },
-    { label: "Digital I/O Pins", value: "14 (6 PWM)" },
-    { label: "Analog Input Pins", value: "6" },
-    { label: "Flash Memory", value: "32 KB" },
-  ];
+  const product = componentsData.find(item => item.id.toString() === id);
 
-  const alternatives = [
-    {
-      name: "Arduino Nano",
-      price: "$18.50",
-      status: "In Stock",
-      statusColor: "text-emerald-400 border-emerald-500/20 bg-emerald-500/5",
-      glowColor: "group-hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:border-emerald-500/50",
-      note: "Similar performance",
-      img: "https://images.unsplash.com/photo-1608564697171-2ed891c32c44?auto=format&fit=crop&w=150&q=80"
-    },
-    {
-      name: "ESP32 DevKit",
-      price: "$12.90",
-      status: "In Stock",
-      statusColor: "text-emerald-400 border-emerald-500/20 bg-emerald-500/5",
-      glowColor: "group-hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:border-emerald-500/50",
-      note: "More features",
-      img: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=150&q=80"
-    },
-    {
-      name: "Arduino Mega 2560",
-      price: "$35.00",
-      status: "Limited Stock",
-      statusColor: "text-amber-400 border-amber-500/20 bg-amber-500/5",
-      glowColor: "group-hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] hover:border-amber-500/50",
-      note: "More I/O pins",
-      img: "https://images.unsplash.com/photo-1608564697171-2ed891c32c44?auto=format&fit=crop&w=150&q=80"
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-[#070b14] flex items-center justify-center text-white">
+        <div className="text-center">
+          <h2 className="text-xl font-bold">Product not found!</h2>
+          <button onClick={() => navigate('/store')} className="mt-4 text-blue-400 font-bold hover:underline">Back to Store</button>
+        </div>
+      </div>
+    );
+  }
+
+  const handleAddToCart = () => {
+    if (product.stock === 0) return;
+    for (let i = 0; i < quantity; i++) {
+      addItem(product);
     }
-  ];
+    setQuantity(1); 
+  };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white px-4 sm:px-6 lg:px-8 pb-24 font-sans select-none relative overflow-hidden">
-      
-      {/* تأثير الإضاءة الخلفية المحيطية (Aura Glow) */}
-      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[130px] pointer-events-none z-0"></div>
+    <div className="min-h-screen bg-[url('/images/bg-circuit.jpg')] bg-cover bg-fixed bg-center relative font-sans text-gray-200 select-none">
+      <div className="absolute inset-0 bg-[#06101e]/80 z-0"></div>
 
-      <style>{`
-        .premium-glass { background: linear-gradient(135deg, rgba(15, 23, 42, 0.45) 0%, rgba(3, 7, 18, 0.75) 100%); backdrop-filter: blur(20px); }
-        .inner-neon { box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.05); }
-      `}</style>
+      {/* ================= نافذة الزوم الكبيرة (Lightbox) ================= */}
+      {isZoomed && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm fade-up">
+          <button 
+            onClick={() => setIsZoomed(false)} 
+            className="absolute top-8 right-8 text-gray-400 hover:text-white p-2 transition-colors cursor-pointer"
+          >
+            <X size={36} />
+          </button>
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl" 
+          />
+        </div>
+      )}
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         
-        {/* زر العودة بتأثير السهم المرن */}
-        <div className="inline-flex items-center gap-2 text-slate-400 text-xs hover:text-blue-400 cursor-pointer mb-8 pt-6 transition-all duration-200 group">
-          <span className="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:-translate-x-1">arrow_back</span>
-          <span className="font-medium tracking-wide">Back to Components</span>
-        </div>
+        <Header />
 
-        {/* =================== شبكة تفاصيل المنتج الرئيسية =================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20">
-          
-          {/* 1. معرض الصور ثلاثي الأبعاد الزجاجي (4 أعمدة) */}
-          <div className="lg:col-span-4 flex flex-col gap-4">
-            <div className="premium-glass inner-neon border border-slate-800/80 rounded-2xl p-6 aspect-square flex items-center justify-center group relative overflow-hidden shadow-2xl">
-              {/* تدرج لوني خفي خلف الصورة يضيء عند الهوفر */}
-              <div className="absolute inset-0 bg-radial-gradient from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-              
-              <img 
-                src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=500&q=80" 
-                alt="Arduino Uno R3" 
-                className="w-4/5 h-4/5 object-contain object-center transform group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 ease-out"
-              />
-              
-              <button className="absolute bottom-4 right-4 bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 text-slate-400 hover:text-blue-400 p-2.5 rounded-xl transition-all shadow-lg">
-                <span className="material-symbols-outlined text-[18px]">zoom_in</span>
-              </button>
-            </div>
+        <style>{`
+          @keyframes floatUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+          .fade-up { animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        `}</style>
 
-            {/* المصغرات التفاعلية مع البوردر المشع */}
-            <div className="grid grid-cols-3 gap-3">
-              {[1, 2, 3].map((i) => (
-                <div 
-                  key={i} 
-                  onClick={() => setActiveThumb(i)}
-                  className={`premium-glass border ${activeThumb === i ? 'border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.2)]' : 'border-slate-800/60'} rounded-xl p-3 aspect-square flex items-center justify-center cursor-pointer hover:border-slate-600 transition-all duration-300 transform active:scale-95`}
-                >
-                  <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=120&q=80" alt="thumb" className="w-full h-full object-contain opacity-80 group-hover:opacity-100" />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 2. لوحة البيانات والـ Cyber Spec Nodes (5 أعمدة) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="flex items-center gap-3 mb-4">
-              <h1 className="text-3xl font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-slate-400">Arduino Uno R3</h1>
-              <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-md tracking-wider uppercase animate-pulse">
-                In Stock
-              </span>
-            </div>
-
-            <p className="text-slate-400 text-xs md:text-sm leading-relaxed mb-6 font-light">
-              The Arduino Uno is a premium microcontroller board based on the ATmega328P. 
-              Engineered for seamless digital input/output mapping & processing.
-            </p>
-
-            <div className="text-3xl font-extrabold tracking-tight text-white mb-6 bg-clip-text">$24.99</div>
-
-            {/* أزرار التحكم والـ Add To Cart النيون */}
-            <div className="flex items-center gap-4 mb-8 w-full">
-              <div className="flex items-center bg-slate-950/80 border border-slate-800/80 rounded-xl px-2 shadow-inner">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-slate-500 hover:text-white px-2 py-2 text-xl transition-colors font-medium">-</button>
-                <span className="text-white px-3 py-2 text-sm font-bold w-8 text-center">{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)} className="text-slate-500 hover:text-white px-2 py-2 text-xl transition-colors font-medium">+</button>
-              </div>
-
-              <button className="flex-1 bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow-lg shadow-blue-600/10 active:scale-[0.98]">
-                Add to Cart
-              </button>
-
-              <button className="premium-glass border border-slate-800/80 text-slate-400 hover:text-rose-400 hover:border-rose-500/30 p-3.5 rounded-xl transition-all shadow-md group">
-                <span className="material-symbols-outlined text-[20px] transform group-hover:scale-110 transition-transform">favorite</span>
-              </button>
-            </div>
-
-            {/* جدول المواصفات المضيء بمسارات النيون */}
-            <div className="flex flex-col border-t border-slate-900 pt-6 mb-8 gap-1">
-              {specs.map((spec, idx) => (
-                <div key={idx} className="flex justify-between items-center py-2.5 text-xs md:text-sm border-b border-slate-900/30 last:border-none group">
-                  <div className="flex items-center gap-2">
-                    {/* النقطة النابضة الإلكترونية */}
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500/40 group-hover:bg-blue-400 transition-colors shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
-                    <span className="text-slate-400 group-hover:text-slate-300 transition-colors font-normal">{spec.label}</span>
-                  </div>
-                  <span className="text-slate-200 group-hover:text-white transition-colors font-semibold tracking-wide bg-slate-950/40 px-2 py-0.5 rounded-md border border-transparent group-hover:border-slate-800/40">{spec.value}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* زر الداتاشيت الزجاجي الفاخر */}
-            <button className="w-full premium-glass border border-blue-500/20 hover:border-blue-500/50 text-blue-400 hover:text-blue-300 font-bold py-3.5 px-4 rounded-xl text-xs md:text-sm flex items-center justify-center gap-2 transition-all shadow-md group">
-              <span className="material-symbols-outlined text-[18px] animate-pulse">terminal</span>
-              <span>View Full Datasheet Blueprint</span>
-            </button>
-          </div>
-
-          {/* 3. كارت الـ Datasheet Preview ثلاثي الأبعاد المشرق (3 أعمدة) */}
-          <div className="lg:col-span-3 premium-glass border border-slate-800/60 rounded-2xl p-4 flex flex-col items-center shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.1)] transition-all duration-500 group/ds">
-            <div className="w-full text-slate-400 text-[11px] font-bold uppercase tracking-widest mb-4 text-left pl-1 flex items-center gap-1.5">
-              <span className="w-1 h-1 rounded-full bg-blue-500"></span>
-              <span>Datasheet Preview</span>
-            </div>
+        <div className="flex-1 overflow-y-auto p-6 mt-16">
+          <div className="max-w-[1400px] mx-auto mt-4">
             
-            {/* غلاف الداتاشيت الفاخر المعزز بظل قوي */}
-            <div className="bg-white rounded-xl p-5 w-full aspect-[3/4] flex flex-col justify-between text-black shadow-[0_15px_35px_rgba(0,0,0,0.6)] transform group-hover/ds:-translate-y-1.5 transition-transform duration-500 select-none relative overflow-hidden border border-slate-200">
-              <div className="flex flex-col gap-1 relative z-10">
-                <div className="text-[16px] font-black tracking-tighter text-slate-950 leading-none">ARDUINO</div>
-                <div className="text-[13px] font-extrabold tracking-tight text-slate-800">UNO REV3</div>
-                <div className="h-[2px] w-8 bg-blue-600 my-1"></div>
-                <div className="text-[8px] text-slate-500 font-semibold tracking-wide uppercase">Product Reference Manual</div>
-              </div>
-              <div className="flex justify-end relative z-10">
-                <div className="text-[9px] font-black border-2 border-slate-950 px-1.5 py-0.5 rounded text-slate-950 tracking-tighter bg-white">
-                  ARDUINO
+            <div 
+              onClick={() => navigate('/store')} 
+              className="fade-up inline-flex items-center gap-2 text-gray-400 text-sm hover:text-blue-400 cursor-pointer mb-8 transition-all group"
+            >
+              <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+              <span>Back to Components</span>
+            </div>
+
+            {/* التقسيمة المظبوطة (4 للصورة - 5 للبيانات - 3 للبدائل) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-20">
+              
+              {/* 1. عمود الصورة (رجعناه 4 عواميد عشان يرجع لحجمه الملموم) */}
+              <div className="fade-up lg:col-span-4" style={{ animationDelay: "50ms" }}>
+                <div className="bg-white rounded-xl aspect-square flex items-center justify-center relative overflow-hidden p-6 shadow-md">
+                  <img 
+                    src={product.image || "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=500&q=80"} 
+                    alt={product.name} 
+                    className="w-4/5 h-4/5 object-contain" 
+                  />
+                  <button 
+                    onClick={() => setIsZoomed(true)} 
+                    className="absolute bottom-4 right-4 bg-[#2b2d31] hover:bg-gray-800 text-gray-300 p-2.5 rounded-lg transition-all"
+                  >
+                    <ZoomIn size={20} />
+                  </button>
                 </div>
               </div>
-            </div>
 
-            {/* أزرار تقليب نيون دائرية خفيفة */}
-            <div className="flex items-center justify-between w-full px-2 mt-5 text-slate-400 text-xs font-semibold">
-              <button className="w-8 h-8 rounded-lg bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 hover:text-white flex items-center justify-center transition-all">
-                <span className="material-symbols-outlined text-[16px]">arrow_back_ios_new</span>
-              </button>
-              <span className="tracking-widest text-slate-300 bg-slate-950/40 px-3 py-1 rounded-full border border-slate-900">1 / 28</span>
-              <button className="w-8 h-8 rounded-lg bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 hover:text-white flex items-center justify-center transition-all">
-                <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        {/* =================== سيكشن المكونات البديلة الذكية المضيئة =================== */}
-        <div className="flex flex-col border-t border-slate-900 pt-12">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]"></span>
-            <h2 className="text-lg font-bold tracking-wide">Smart Microcomponent Alternatives</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {alternatives.map((alt, index) => (
-              <div 
-                key={index} 
-                className={`premium-glass border border-slate-800/60 rounded-2xl p-4 flex items-center justify-between group transition-all duration-500 ${alt.glowColor} hover:-translate-y-2 cursor-pointer`}
-              >
-                <div className="flex items-center gap-4">
-                  {/* حاوية صورة المكون البديل الغامضة */}
-                  <div className="bg-slate-950/80 p-2.5 rounded-xl w-16 h-16 flex items-center justify-center border border-slate-900 overflow-hidden inner-neon transition-transform duration-300 group-hover:scale-105">
-                    <img src={alt.img} alt={alt.name} className="w-full h-full object-cover rounded-lg opacity-90" />
-                  </div>
+              {/* 2. عمود البيانات التقنية (5 عواميد) */}
+              <div className="fade-up lg:col-span-5 flex flex-col" style={{ animationDelay: "100ms" }}>
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-3xl font-black tracking-wide text-white">
+                    {product.name}
+                  </h1>
                   
-                  {/* بيانات المكون الفنية */}
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-white text-[14px] font-bold tracking-wide group-hover:text-blue-400 transition-colors">{alt.name}</h3>
-                    <div className="text-slate-100 text-xs font-black">{alt.price}</div>
-                    
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <span className={`text-[9px] font-bold px-2 py-0.5 rounded border ${alt.statusColor}`}>
-                        {alt.status}
-                      </span>
-                      <span className="text-slate-500 text-[10px] font-medium">{alt.note}</span>
-                    </div>
-                  </div>
+                  <span className={`text-[10px] font-bold px-2 py-1 rounded-md tracking-wider uppercase ${product.stock > 0 ? 'bg-[#0a2e22] border border-[#135a43] text-emerald-400' : 'bg-red-950 border border-red-800 text-red-400'}`}>
+                    {product.stock > 0 ? `IN STOCK: ${product.stock}` : 'OUT OF STOCK'}
+                  </span>
                 </div>
 
-                {/* زر إضافة سريع للسلة يتحول بالكامل للنيون عند الهوفر */}
-                <button className="bg-slate-950/80 border border-slate-800 text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500/50 p-3 rounded-xl transition-all duration-300 shadow-md transform active:scale-90">
-                  <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
-                </button>
+                <p className="text-gray-400 text-sm mb-6 font-light">
+                  {product.description}
+                </p>
+
+                <div className="text-3xl font-extrabold tracking-tight text-white mb-6">
+                  EGP {product.price.toFixed(2)}
+                </div>
+
+                <div className="flex items-center gap-3 mb-8 w-full border-b border-gray-800/60 pb-8">
+                  <div className={`flex items-center bg-[#070b14] border border-gray-800 rounded-xl overflow-hidden h-12 w-28 shrink-0 ${product.stock === 0 && 'opacity-50 pointer-events-none'}`}>
+                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3 text-gray-500 hover:text-white transition-colors h-full flex items-center"><Minus size={14} /></button>
+                    <span className="w-full text-center bg-transparent text-white text-sm font-bold">{quantity}</span>
+                    <button onClick={() => setQuantity(Math.min(product.stock, quantity + 1))} className="px-3 text-gray-500 hover:text-white transition-colors h-full flex items-center"><Plus size={14} /></button>
+                  </div>
+
+                  <button 
+                    onClick={handleAddToCart}
+                    disabled={product.stock === 0}
+                    className={`flex-1 py-3.5 rounded-xl text-sm font-bold transition-all h-12 flex items-center justify-center ${product.stock > 0 ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg active:scale-95' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
+                  >
+                    {product.stock > 0 ? 'Add to Cart' : 'Sold Out'}
+                  </button>
+                </div>
+
+                {product.features && product.features.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 flex items-center gap-2">
+                      <Cpu size={14} className="text-blue-400" />
+                      Key Features
+                    </h3>
+                    <ul className="space-y-2 text-xs font-medium text-gray-400 pl-1">
+                      {product.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1"></span>
+                          <span className="leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {product.applications && product.applications.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 flex items-center gap-2">
+                      <Activity size={14} className="text-cyan-400" />
+                      Applications
+                    </h3>
+                    <ul className="space-y-2 text-xs font-medium text-gray-400 pl-1">
+                      {product.applications.map((app, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1"></span>
+                          <span className="leading-relaxed">{app}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-            ))}
+
+              {/* 3. عمود البدائل النصية (3 عواميد) */}
+              <div className="fade-up lg:col-span-3 flex flex-col gap-4" style={{ animationDelay: "150ms" }}>
+                <div className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2 flex items-center gap-2 border-b border-gray-800/60 pb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                  Alternatives & Suggested
+                </div>
+                
+                {product.alternatives && product.alternatives.length > 0 ? (
+                  product.alternatives.map((alt, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-transparent border border-gray-800/50 hover:border-gray-600 rounded-xl p-4 flex items-center justify-between transition-all cursor-pointer group"
+                    >
+                      <div className="flex flex-col">
+                        <h3 className="text-white text-sm font-bold group-hover:text-blue-400 transition-colors">{alt.name}</h3>
+                        {alt.price && (
+                          <div className="text-gray-500 text-xs mt-1">EGP {parseFloat(alt.price).toFixed(2)}</div>
+                        )}
+                      </div>
+                      <button className="text-gray-600 group-hover:text-white transition-colors">
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-center p-6 border border-gray-800/40 rounded-xl opacity-60">
+                    <p className="text-xs text-gray-500">No alternatives registered.</p>
+                  </div>
+                )}
+              </div>
+
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   );
 };
 
-export default CreativeProductPage;
+export default ProductPage;

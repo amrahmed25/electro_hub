@@ -1,19 +1,19 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, FileText, Wand2, Cpu, CircuitBoard, ArrowRight, ShoppingCart, Zap, ShieldCheck } from 'lucide-react';
+import { Search, Wand2, Cpu, CircuitBoard, ArrowRight, ShoppingCart, ShieldCheck } from 'lucide-react';
 import Header from './Header';
 import componentsData from '../data/components.json';
+import { useCart } from '../CartContext'; 
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
-  
-  // 🌟 1. عملنا State جديدة عشان تشيل القسم اللي اليوزر اختاره من الدروب داون
   const [searchCategory, setSearchCategory] = useState('All Categories');
   
   const navigate = useNavigate();
+  const { addItem } = useCart(); 
+  
   const featuredComponents = componentsData.slice(0, 4);
 
-  // 🌟 2. كود ذكي بيقرا ملف الـ JSON ويستخرج منه كل الأقسام الحقيقية بدون تكرار
   const dynamicCategories = useMemo(() => {
     const uniqueCategories = new Set(componentsData.map(item => item.category));
     return ['All Categories', ...Array.from(uniqueCategories)];
@@ -21,7 +21,6 @@ export default function Home() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // 🌟 3. التعديل هنا: بنبعت الكلمة المكتوبة + القسم اللي اختاره لصفحة المتجر
     navigate('/store', { 
       state: { 
         initialSearch: searchQuery,
@@ -30,10 +29,13 @@ export default function Home() {
     }); 
   };
 
+  // 🌟 الكروت بقت 3 بس وتم التعديل عليهم مع إضافة حالة البدائل الذكية
   const features = [
-    { title: "Datasheets Library", desc: "Find, review, and organize datasheets easily.", icon: FileText, link: "/datasheets", color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/30 hover:border-blue-500/80 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]", action: "Explore Library" },
     { title: "Project Generator", desc: "Generate full component lists and step-by-step guides using AI.", icon: Wand2, link: "/project-generator", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/30 hover:border-cyan-500/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]", action: "Try Generator" },
-    { title: "Smart Alternatives", desc: "Out of stock? Find the perfect alternative component based on specs.", icon: Cpu, link: "/store", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30 hover:border-emerald-500/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]", action: "Find Alternatives" },
+    
+    // 🌟 الإضافة هنا: تمرير الـ state الخاصة بالـ Smart Alternatives
+    { title: "Smart Alternatives", desc: "Out of stock? Find the perfect alternative component based on specs.", icon: Cpu, link: "/store", state: { highlightMoreDetails: true }, color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30 hover:border-emerald-500/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]", action: "Find Alternatives" },
+    
     { title: "Logic Simulator", desc: "Build and test digital logic circuits in real-time.", icon: CircuitBoard, link: "/logic", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/30 hover:border-amber-500/80 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]", action: "Launch Simulator" }
   ];
 
@@ -67,7 +69,6 @@ export default function Home() {
                 Find datasheets, discover components, generate project requirements using AI, and buy everything you need — all in one unified workspace.
               </p>
 
-              {/* شريط البحث المطور */}
               <form onSubmit={handleSearch} className="fade-up w-full max-w-3xl flex items-center bg-[#0d1323]/90 backdrop-blur-xl border border-gray-700/60 rounded-full p-2 shadow-2xl" style={{ animationDelay: "300ms" }}>
                 <div className="pl-5 pr-2 text-gray-400"><Search size={22} /></div>
                 <input 
@@ -78,7 +79,6 @@ export default function Home() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 
-                {/* 🌟 4. هنا عملنا ريندر لكل الأقسام بشكل ديناميكي وربطناها بالـ onChange */}
                 <div className="hidden sm:block border-l border-gray-700/60 px-4">
                   <select 
                     value={searchCategory}
@@ -99,12 +99,13 @@ export default function Home() {
               </form>
             </div>
 
-            {/* FEATURES CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-32">
+            {/* FEATURES CARDS (التعديل تم هنا ليكونوا 3 كروت في المنتصف) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-32 max-w-5xl mx-auto">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  onClick={() => navigate(feature.link)}
+                  // 🌟 الإضافة هنا: لو الكارت ليه state هيبعتها مع الـ navigate
+                  onClick={() => navigate(feature.link, feature.state ? { state: feature.state } : {})}
                   className={`fade-up cursor-pointer group bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-3xl border transition-all duration-300 flex flex-col h-full ${feature.border}`}
                   style={{ animationDelay: `${400 + index * 100}ms` }}
                 >
@@ -127,22 +128,32 @@ export default function Home() {
                   <h2 className="text-3xl font-extrabold text-white tracking-wide mb-2">Featured Components</h2>
                   <p className="text-gray-400 text-sm">Top picks from our massive components library.</p>
                 </div>
-                <button onClick={() => navigate('/store')} className="hidden sm:flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors">
+                <button onClick={() => navigate('/store', { state: { highlightMoreDetails: true } })} className="hidden sm:flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors">
                   Explore Store <ArrowRight size={18} />
                 </button>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {featuredComponents.map((item) => (
-                  <div key={item.id} className="bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border border-gray-800/60 hover:border-gray-600 transition-all flex flex-col group">
-                    <div className="bg-white rounded-xl h-32 mb-4 p-2 flex items-center justify-center relative overflow-hidden">
+                  <div 
+                    key={item.id} 
+                    onClick={() => navigate(`/product/${item.id}`)} 
+                    className="cursor-pointer bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border border-gray-800/60 hover:border-gray-500 transition-all flex flex-col group hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                  >
+                    <div className="bg-white rounded-xl h-32 mb-4 p-2 flex items-center justify-center relative overflow-hidden shadow-inner">
                        <img src={item.image} alt={item.name} className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500" />
                     </div>
-                    <h4 className="font-bold text-white text-sm line-clamp-1 mb-1">{item.name}</h4>
+                    <h4 className="font-bold text-white text-sm line-clamp-1 mb-1 group-hover:text-blue-400 transition-colors">{item.name}</h4>
                     <p className="text-xs text-gray-500 mb-4 line-clamp-2 h-8">{item.description}</p>
                     <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-800/60">
-                      <span className="font-extrabold text-white">EGP {item.price}</span>
-                      <button onClick={(e) => { e.stopPropagation(); navigate('/store'); }} className="text-blue-500 hover:text-blue-400 bg-blue-900/20 p-2 rounded-lg transition-colors">
+                      <span className="font-extrabold text-white">EGP {parseFloat(item.price).toFixed(2)}</span>
+                      <button 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          addItem(item); 
+                        }} 
+                        className="text-blue-500 hover:text-white hover:bg-blue-600 bg-blue-900/20 p-2 rounded-lg transition-colors"
+                      >
                         <ShoppingCart size={16} />
                       </button>
                     </div>
@@ -160,19 +171,19 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
                 <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-[1px] bg-gradient-to-r from-blue-900 via-cyan-900 to-emerald-900 -z-10"></div>
                 
-                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl">
+                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform">
                   <div className="w-14 h-14 bg-blue-900/30 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-800/50 text-xl font-black shadow-[0_0_15px_rgba(59,130,246,0.3)]">1</div>
                   <h4 className="text-white font-bold mb-2">Design & Generate</h4>
                   <p className="text-sm text-gray-500">Use our AI generator or logic simulator to design your perfect circuit.</p>
                 </div>
                 
-                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl">
+                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform">
                   <div className="w-14 h-14 bg-cyan-900/30 text-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-cyan-800/50 text-xl font-black shadow-[0_0_15px_rgba(6,182,212,0.3)]">2</div>
                   <h4 className="text-white font-bold mb-2">Find Components</h4>
                   <p className="text-sm text-gray-500">Read datasheets, compare specs, and find the smartest alternatives instantly.</p>
                 </div>
                 
-                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl">
+                <div className="text-center bg-[#070b14] border border-gray-800/80 p-6 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform">
                   <div className="w-14 h-14 bg-emerald-900/30 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-800/50 text-xl font-black shadow-[0_0_15px_rgba(16,185,129,0.3)]">3</div>
                   <h4 className="text-white font-bold mb-2">Build It</h4>
                   <p className="text-sm text-gray-500">Add everything to cart, checkout seamlessly, and start building your project.</p>
@@ -192,7 +203,7 @@ export default function Home() {
                 <a href="#" className="hover:text-blue-400 transition-colors">Contact Support</a>
               </div>
               <p className="text-xs text-gray-600 flex items-center justify-center gap-2">
-                <ShieldCheck size={14} className="text-emerald-500/70" /> © 2024 CircuitCore. All rights reserved. Designed for Engineers.
+                <ShieldCheck size={14} className="text-emerald-500/70" /> © 2026 CircuitCore. All rights reserved. Designed for Engineers.
               </p>
             </footer>
 

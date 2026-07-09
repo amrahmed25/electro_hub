@@ -9,7 +9,24 @@
     "price": 75.00,
     "stock": 45,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9571/image_1024/%5BSS50AT%5D%20SS50AT%20-%20Linear%20Hall%20Effect%20Magnetic%20Sensor%20-%20Bipolar?unique=2958fe6",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS50AT"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS50AT",
+    "features": [
+      "Magnetic Actuation Type: Bipolar",
+      "Supply Voltage Range: 4.5 Vdc to 24 Vdc",
+      "Output Type: Open collector (sinking)",
+      "Output Current: 20 mA maximum",
+      "Operating Temperature Range: -40°C to 125°C"
+    ],
+    "applications": [
+      "Speed and RPM sensing",
+      "Brushless DC motor commutation",
+      "Flow rate sensing",
+      "Motor and fan control"
+    ],
+    "alternatives": [
+      { "name": "SS40A", "price": "48.00" },
+      { "name": "SS41F", "price": "35.00" }
+    ]
   },
   {
     "id": "2",
@@ -21,7 +38,24 @@
     "price": 48.00,
     "stock": 120,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9570/image_1024/%5BSS40A%5D%20SS40A%20-%20Linear%20Hall%20Effect%20Sensor%20-%20Bipolar?unique=19c8d47",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS40A"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS40A",
+    "features": [
+      "Magnetic Actuation Type: Bipolar",
+      "Supply Voltage Range: 4.5 Vdc to 24 Vdc",
+      "Output Type: Open-sink",
+      "Reverse Battery Protection",
+      "Small TO-92 package"
+    ],
+    "applications": [
+      "Brushless DC motor commutation",
+      "Speed and RPM sensing",
+      "Tachometer and counter pickups",
+      "Robotics control systems"
+    ],
+    "alternatives": [
+      { "name": "SS50AT", "price": "75.00" },
+      { "name": "A3144", "price": "25.00" }
+    ]
   },
   {
     "id": "3",
@@ -33,7 +67,23 @@
     "price": 135.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9465/image_1024/%5BKIT.RTC.DS3231.I2C%5D%20RTC%20-%20DS3231%20%2B%20EEPROM%20AT24C32%20I2C%20Precision%20Module%20with%20Battery?unique=4001d64",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS3231"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS3231",
+    "features": [
+      "Highly Accurate RTC with Integrated TCXO",
+      "I2C Serial Interface",
+      "Operating Voltage: 3.3V to 5.5V",
+      "Battery Backup Input for Continuous Timekeeping",
+      "Includes AT24C32 32K EEPROM"
+    ],
+    "applications": [
+      "Servers and telematics",
+      "Utility power meters",
+      "GPS tracking systems",
+      "Data logging applications"
+    ],
+    "alternatives": [
+      { "name": "DS1307 RTC Module", "price": "45.00" }
+    ]
   },
   {
     "id": "4",
@@ -45,7 +95,24 @@
     "price": 375.00,
     "stock": 15,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9446/image_1024/%5BKIT.ADS1232.ADC%5D%20ADS1232%20-%2024%20Bit%20Delta-Sigma%20Low%20Noise%20SPI%20ADC%20Module?unique=475263d",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ADS1232"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ADS1232",
+    "features": [
+      "Resolution: 24-Bit Delta-Sigma ADC",
+      "On-Board Low-Noise PGA (Gain = 1, 2, 64, or 128)",
+      "Selectable Data Rates: 10SPS or 80SPS",
+      "Simultaneous 50Hz and 60Hz Rejection",
+      "SPI-Compatible Interface"
+    ],
+    "applications": [
+      "Weigh scales",
+      "Strain gauges",
+      "Pressure sensors",
+      "Industrial process control"
+    ],
+    "alternatives": [
+      { "name": "HX711 Module", "price": "35.00" },
+      { "name": "ADS1115 16-Bit ADC", "price": "120.00" }
+    ]
   },
   {
     "id": "5",
@@ -57,7 +124,24 @@
     "price": 1750.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9445/image_1024/%5BKIT.AMG8833.IR.IMAGER%5D%20GY-AMG8833%20Infrared%20Thermal%20Imager%20Sensor%20Module?unique=b8b4f23",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AMG8833"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AMG8833",
+    "features": [
+      "Grid Array: 8x8 (64 pixels)",
+      "Temperature Range: 0°C to 80°C (High Gain)",
+      "I2C interface for microcontroller communication",
+      "Viewing Angle: 60 degrees",
+      "Frame Rate: 10 FPS"
+    ],
+    "applications": [
+      "Human presence detection",
+      "Thermal mapping",
+      "Gesture recognition",
+      "Energy management systems"
+    ],
+    "alternatives": [
+      { "name": "MLX90640 32x24 IR Array", "price": "3200.00" },
+      { "name": "MLX90614ESF", "price": "950.00" }
+    ]
   },
   {
     "id": "6",
@@ -69,7 +153,24 @@
     "price": 30.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9145/image_1024/%5BDS18B20.COPY%5D%20DS18B20%20-%20Copy%20-%20Digital%20Temperature%20Sensor?unique=9072197",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS18B20"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS18B20",
+    "features": [
+      "Unique 1-Wire Interface requires only one port pin for communication",
+      "Thermometer Resolution is user selectable from 9 to 12 bits",
+      "Measures Temperatures from -55°C to +125°C",
+      "±0.5°C Accuracy from -10°C to +85°C",
+      "Derives power directly from data line (parasite power)"
+    ],
+    "applications": [
+      "Thermostatic Controls",
+      "Industrial Systems",
+      "Consumer Products",
+      "Thermometers or Thermally Sensitive Systems"
+    ],
+    "alternatives": [
+      { "name": "DS18B20 (Original)", "price": "120.00" },
+      { "name": "LM35DZ", "price": "25.00" }
+    ]
   },
   {
     "id": "7",
@@ -81,7 +182,23 @@
     "price": 10.00,
     "stock": 200,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9144/image_1024/%5B74HC32.COPY%5D%20Copy%20IC%207432%20-%20Quad%202%20Input%20OR%20Gate?unique=a159efa",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7432"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7432",
+    "features": [
+      "Wide Operating Voltage Range: 2.0V to 6.0V",
+      "Outputs can drive up to 10 LSTTL loads",
+      "Low Power Consumption: 20 µA maximum ICC",
+      "Typical tpd = 8 ns at 5V",
+      "Quad 2-Input OR Configuration"
+    ],
+    "applications": [
+      "Digital Logic Circuits",
+      "Signal Multiplexing",
+      "Alarm Systems",
+      "Combinational Logic Design"
+    ],
+    "alternatives": [
+      { "name": "CD4071 (CMOS OR Gate)", "price": "12.00" }
+    ]
   },
   {
     "id": "8",
@@ -93,7 +210,23 @@
     "price": 10.00,
     "stock": 250,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9144/image_1024/%5B74HC32.COPY%5D%20Copy%20IC%207432%20-%20Quad%202%20Input%20OR%20Gate?unique=a159efa",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7408"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7408",
+    "features": [
+      "Wide Operating Voltage Range: 2.0V to 6.0V",
+      "Low Input Current: 1 µA Maximum",
+      "High Noise Immunity",
+      "Quadruple 2-Input AND Gate",
+      "Standard TTL compatibility"
+    ],
+    "applications": [
+      "Arithmetic Logic Units (ALUs)",
+      "Digital logic gating",
+      "Data validation circuits",
+      "Educational project boards"
+    ],
+    "alternatives": [
+      { "name": "CD4081 (CMOS AND Gate)", "price": "12.00" }
+    ]
   },
   {
     "id": "9",
@@ -105,7 +238,23 @@
     "price": 10.00,
     "stock": 180,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9144/image_1024/%5B74HC32.COPY%5D%20Copy%20IC%207432%20-%20Quad%202%20Input%20OR%20Gate?unique=a159efa",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7400"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7400",
+    "features": [
+      "Quad 2-Input NAND Gate",
+      "Operating Voltage Range: 4.75V to 5.25V",
+      "Propagation Delay Time: ~10 ns",
+      "Max Output Current: 8mA",
+      "Industry standard 74xx pinout"
+    ],
+    "applications": [
+      "Universal logic implementation",
+      "Oscillator circuits",
+      "SR Latch construction",
+      "Clock signal inversion/gating"
+    ],
+    "alternatives": [
+      { "name": "CD4011 (CMOS NAND Gate)", "price": "12.00" }
+    ]
   },
   {
     "id": "10",
@@ -117,7 +266,23 @@
     "price": 10.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/9144/image_1024/%5B74HC32.COPY%5D%20Copy%20IC%207432%20-%20Quad%202%20Input%20OR%20Gate?unique=a159efa",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7404"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7404",
+    "features": [
+      "Hex Inverter (6 Independent NOT Gates)",
+      "Operating Voltage Range: 4.75V to 5.25V",
+      "High-level input voltage: 2V min",
+      "Low-level input voltage: 0.8V max",
+      "Fully compatible with TTL logic levels"
+    ],
+    "applications": [
+      "Signal inversion",
+      "Clock generation circuits",
+      "Pulse shaping",
+      "LED driving (active low)"
+    ],
+    "alternatives": [
+      { "name": "CD4069 (CMOS Hex Inverter)", "price": "12.00" }
+    ]
   },
   {
     "id": "11",
@@ -129,7 +294,23 @@
     "price": 275.00,
     "stock": 20,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8819/image_1024/%5BPIC18F87K22.I-PT%5D%20PIC18F87K22-I-PT?unique=cf26a29",
-    "datasheet": "https://www.microchip.com/en-us/product/PIC18F87K22"
+    "datasheet": "https://www.microchip.com/en-us/product/PIC18F87K22",
+    "features": [
+      "Program Memory: 128 KB Flash",
+      "eXtreme Low Power (XLP) Technology",
+      "12-Bit ADC with 24 channels",
+      "Operating Speed: Up to 64 MHz",
+      "Hardware Real-Time Clock and Calendar (RTCC)"
+    ],
+    "applications": [
+      "Low-power embedded systems",
+      "Industrial control and monitoring",
+      "Automotive networks",
+      "Smart metering applications"
+    ],
+    "alternatives": [
+      { "name": "PIC18F87K90-I/PT", "price": "225.00" }
+    ]
   },
   {
     "id": "12",
@@ -141,7 +322,23 @@
     "price": 225.00,
     "stock": 15,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8819/image_1024/%5BPIC18F87K22.I-PT%5D%20PIC18F87K22-I-PT?unique=cf26a29",
-    "datasheet": "https://www.microchip.com/en-us/product/PIC18F87K90"
+    "datasheet": "https://www.microchip.com/en-us/product/PIC18F87K90",
+    "features": [
+      "Program Memory: 128 KB Flash",
+      "Integrated LCD Driver (up to 192 pixels)",
+      "eXtreme Low Power (XLP) Technology",
+      "12-Bit ADC with 24 channels",
+      "Charge Time Measurement Unit (CTMU) for capacitive touch"
+    ],
+    "applications": [
+      "LCD display applications",
+      "Capacitive touch interfaces",
+      "Portable medical devices",
+      "Low power utility meters"
+    ],
+    "alternatives": [
+      { "name": "PIC18F87K22-I/PT", "price": "275.00" }
+    ]
   },
   {
     "id": "13",
@@ -153,7 +350,23 @@
     "price": 200.00,
     "stock": 30,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8815/image_1024/%5BPIC18F45K22.I-PT%5D%20PIC18F45K22-I-PT?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/PIC18F45K22"
+    "datasheet": "https://www.microchip.com/en-us/product/PIC18F45K22",
+    "features": [
+      "Program Memory: 32 KB Flash",
+      "Data SRAM: 1536 Bytes",
+      "Operating Frequency: Up to 64 MHz",
+      "10-Bit ADC with up to 30 channels",
+      "XLP Technology for ultra-low power consumption"
+    ],
+    "applications": [
+      "Automotive networking",
+      "Industrial automation",
+      "IoT sensor nodes",
+      "Home appliances"
+    ],
+    "alternatives": [
+      { "name": "PIC18F4550", "price": "180.00" }
+    ]
   },
   {
     "id": "14",
@@ -165,7 +378,23 @@
     "price": 375.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8575/image_1024/%5BKIT.PLC.5V.TO.24V.8CH%5D%20PLC%20Signal%20Level%20Converter%208%20Channel%205V%20TO%2024V%20Optocoupler%20Isolation%20Module%20NPN%20Output?unique=2e765d3",
-    "datasheet": "https://www.microchip.com/en-us/product/PIC18F452"
+    "datasheet": "https://www.microchip.com/en-us/product/PIC18F452",
+    "features": [
+      "Program Memory: 32 KB Flash",
+      "10-bit Analog-to-Digital Converter",
+      "Hardware Multiplier (8x8 single cycle)",
+      "High-current sink/source 25 mA/25 mA",
+      "Through-hole DIP-40 package for easy breadboarding"
+    ],
+    "applications": [
+      "Legacy control systems",
+      "Educational projects",
+      "DIY electronics",
+      "Robotics prototyping"
+    ],
+    "alternatives": [
+      { "name": "PIC18F4520-I/P", "price": "165.00" }
+    ]
   },
   {
     "id": "15",
@@ -177,7 +406,23 @@
     "price": 950.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8240/image_1024/%5BKIT.MLX90614.ESF.BCC%5D%20GY-906%20MLX90614ESF-BCC%20Contactless%20Temperature%20Sensor%20Module?unique=5383aa8",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MLX90614"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MLX90614",
+    "features": [
+      "Measurement Resolution: 0.02°C",
+      "Object Temperature Range: -70°C to +380°C",
+      "Ambient Temperature Range: -40°C to +125°C",
+      "SMBus/I2C compatible digital interface",
+      "Factory calibrated in wide temperature range"
+    ],
+    "applications": [
+      "Healthcare (Body temperature measurement)",
+      "Industrial temperature control of moving parts",
+      "Smart home climate control",
+      "Automotive blind angle detection"
+    ],
+    "alternatives": [
+      { "name": "GY-AMG8833", "price": "1750.00" }
+    ]
   },
   {
     "id": "16",
@@ -189,7 +434,24 @@
     "price": 75.00,
     "stock": 60,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8238/image_1024/%5BKIT.L293D.BLUE%5D%20L293D%20Expansion%20Board%20Module%20%28SKU%23K293%29?unique=f751bc8",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L293D"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L293D",
+    "features": [
+      "Wide Supply-Voltage Range: 4.5 V to 36 V",
+      "Output Current 600 mA Per Channel",
+      "Peak Output Current 1.2 A Per Channel",
+      "Internal ESD Protection",
+      "Separate Input-Logic Supply"
+    ],
+    "applications": [
+      "DC motor control",
+      "Stepper motor driving",
+      "Robotics chassis movement",
+      "Relay and solenoid driving"
+    ],
+    "alternatives": [
+      { "name": "L298N Motor Driver Module", "price": "65.00" },
+      { "name": "TB6612FNG Module", "price": "85.00" }
+    ]
   },
   {
     "id": "17",
@@ -201,7 +463,23 @@
     "price": 60.00,
     "stock": 40,
     "image": "https://www.ram-e-shop.com/web/image/product.product/8237/image_1024/%5BKIT.ISOLATION.4XPC817%5D%20PC817%20-%204%20Channel%20Optocoupler%20Isolation%20Board?unique=3ba6c41",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=PC817"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=PC817",
+    "features": [
+      "4 Independent Isolation Channels",
+      "High Isolation Voltage: 5000Vrms",
+      "Input Voltage: 3.6V to 24V",
+      "Output Voltage: 3.6V to 30V",
+      "Current Transfer Ratio (CTR): 50% to 600%"
+    ],
+    "applications": [
+      "Microcontroller I/O protection",
+      "PLC signal interfacing",
+      "Noise isolation in industrial environments",
+      "Level shifting (e.g., 5V to 24V)"
+    ],
+    "alternatives": [
+      { "name": "TLP281-4 4-Channel Module", "price": "75.00" }
+    ]
   },
   {
     "id": "18",
@@ -213,7 +491,23 @@
     "price": 650.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/8223/image_512/%5BKIT.AD9833.SIGNAL.GEN%5D%20AD9833%20DDS%20Wave%20Signal%20Generator%20Sin-Triangle-Square?unique=cc2ebe2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD9833"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD9833",
+    "features": [
+      "Digitally Programmable Frequency and Phase",
+      "Output Frequency Range: 0 MHz to 12.5 MHz",
+      "28-Bit Resolution: 0.1 Hz at 25 MHz Reference Clock",
+      "Sinusoidal, Triangular, and Square Wave Outputs",
+      "3-Wire SPI Interface"
+    ],
+    "applications": [
+      "Frequency stimulus/waveform generation",
+      "Liquid and gas flow measurement",
+      "Sensory applications (proximity, motion)",
+      "Sweep frequency generators"
+    ],
+    "alternatives": [
+      { "name": "AD9850 DDS Module", "price": "450.00" }
+    ]
   },
   {
     "id": "19",
@@ -225,7 +519,23 @@
     "price": 100.00,
     "stock": 85,
     "image": "https://www.ram-e-shop.com/web/image/product.template/8196/image_512/%5BKIT.MAX485%5D%20Kit%20MAX485%20-%20RS485%20Converter%20to%20TTL%20Level?unique=cd4c01f",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX485"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX485",
+    "features": [
+      "Low-Power RS-485 Transceiver",
+      "Data Rates up to 2.5 Mbps",
+      "Half-Duplex Communication",
+      "Single +5V Supply",
+      "Allows up to 32 Transceivers on the Bus"
+    ],
+    "applications": [
+      "Industrial automation networks",
+      "Long-distance serial communication",
+      "Modbus protocol interfaces",
+      "Building automation systems"
+    ],
+    "alternatives": [
+      { "name": "MAX3485 (3.3V Version)", "price": "115.00" }
+    ]
   },
   {
     "id": "20",
@@ -237,7 +547,23 @@
     "price": 25.00,
     "stock": 300,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7832/image_512/%5BMAX232IN%5D%20MAX232IN?unique=bf7614b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX232IN"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX232IN",
+    "features": [
+      "Operates from a Single 5-V Power Supply",
+      "Meets or Exceeds TIA/EIA-232-F Standard",
+      "Dual Driver and Dual Receiver",
+      "Operates up to 120 kbit/s",
+      "On-chip voltage converter (requires only 4 external capacitors)"
+    ],
+    "applications": [
+      "Microcontroller to PC serial communication",
+      "Battery-powered systems",
+      "Legacy CNC machine interfaces",
+      "Modem interfacing"
+    ],
+    "alternatives": [
+      { "name": "MAX3232 (3.3V Compatible)", "price": "35.00" }
+    ]
   },
   {
     "id": "21",
@@ -251,6 +577,35 @@
     "image": "https://www.ram-e-shop.com/web/image/product.template/8128/image_512/%5BA3291KUAT%5D%20A3291KUA-T%20Hall%20Effect%20Sensor?unique=7ee828f",
     "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=A3291KUA-T"
   },
+{
+    "id": "21",
+    "name": "A3291KUA-T",
+    "category": "Discrete Semiconductors",
+    "description": "Chopper-Stabilized Precision Hall-Effect Latches Sensor.",
+    "manufacturer": "Generic",
+    "package": "TO-92",
+    "price": 125.00,
+    "stock": 70,
+    "image": "https://www.ram-e-shop.com/web/image/product.template/8128/image_512/%5BA3291KUAT%5D%20A3291KUA-T%20Hall%20Effect%20Sensor?unique=7ee828f",
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=A3291KUA-T",
+    "features": [
+      "Chopper stabilization for superior temperature stability",
+      "Operating Voltage: 3.0 V to 24 V",
+      "Symmetrical switch points",
+      "Solid-state reliability with small TO-92 package",
+      "Resistant to physical stress"
+    ],
+    "applications": [
+      "Brushless DC (BDC) motor commutation",
+      "Speed and RPM sensing",
+      "Tachometer receivers",
+      "Magnetic encoding applications"
+    ],
+    "alternatives": [
+      { "name": "US1881 Hall Latch", "price": "35.00" },
+      { "name": "SS41F", "price": "30.00" }
+    ]
+  },
   {
     "id": "22",
     "name": "IR2184",
@@ -261,7 +616,24 @@
     "price": 200.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/8127/image_512/%5BIR2184%5D%20IR2184?unique=3ab0a31",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=IR2184"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=IR2184",
+    "features": [
+      "Floating channel designed for bootstrap operation (up to +600V)",
+      "Tolerant to negative transient voltage (dV/dt immune)",
+      "Gate drive supply range from 10V to 20V",
+      "Undervoltage lockout for both channels",
+      "Deadtime internally fixed"
+    ],
+    "applications": [
+      "Half-bridge and Full-bridge inverters",
+      "Switched-Mode Power Supplies (SMPS)",
+      "AC and DC Motor Drives",
+      "Induction heating controllers"
+    ],
+    "alternatives": [
+      { "name": "IR2110", "price": "180.00" },
+      { "name": "IR2104", "price": "165.00" }
+    ]
   },
   {
     "id": "23",
@@ -273,7 +645,23 @@
     "price": 145.00,
     "stock": 25,
     "image": "https://www.ram-e-shop.com/web/image/product.template/8012/image_512/%5BKIT.POT.X9C103S%5D%20X9C103S%20Digital%20Potentiometer%20module%20%2810Kohm%29?unique=66db815",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=X9C103S"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=X9C103S",
+    "features": [
+      "Solid-state digital potentiometer",
+      "10 kΩ resistor array with 100 wiper tap points",
+      "3-wire up/down serial interface",
+      "Non-volatile wiper storage (EEPROM)",
+      "Operating voltage: 5V"
+    ],
+    "applications": [
+      "Digital volume control for audio",
+      "LCD contrast adjustment",
+      "Programmable voltage references",
+      "Sensor calibration and trimming"
+    ],
+    "alternatives": [
+      { "name": "MCP41010 (10K SPI)", "price": "120.00" }
+    ]
   },
   {
     "id": "24",
@@ -285,7 +673,23 @@
     "price": 80.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/8009/image_512/%5BKIT.MULTIPLEXER.744067%5D%2074HC4067%2016-Channel%20Analog%20Digital%20Multiplexer%20Breakout%20Board?unique=b85c20c",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74HC4067"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74HC4067",
+    "features": [
+      "16-channel analog/digital multiplexer/demultiplexer",
+      "Wide operating voltage: 2V to 6V",
+      "Low ON resistance: 70 Ohms (typical at 4.5V)",
+      "Bidirectional data flow",
+      "Low crosstalk between channels"
+    ],
+    "applications": [
+      "Microcontroller analog input expansion",
+      "Sensor array reading",
+      "Audio and video signal routing",
+      "LED matrix driving"
+    ],
+    "alternatives": [
+      { "name": "CD74HC4051 (8-Channel)", "price": "45.00" }
+    ]
   },
   {
     "id": "25",
@@ -297,7 +701,23 @@
     "price": 25.00,
     "stock": 110,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7832/image_512/%5BMAX232IN%5D%20MAX232IN?unique=bf7614b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX232IN"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MAX232IN",
+    "features": [
+      "Operates from Single 5V Power Supply",
+      "Two Drivers and Two Receivers",
+      "±30-V Input Levels Tolerant",
+      "Low Supply Current: 8 mA typical",
+      "Meets TIA/EIA-232-F and ITU V.28 Standards"
+    ],
+    "applications": [
+      "PC to Microcontroller serial communication",
+      "Legacy serial port devices",
+      "Modem interfaces",
+      "RS-232 level shifting"
+    ],
+    "alternatives": [
+      { "name": "MAX3232 (3.3V Compatible)", "price": "35.00" }
+    ]
   },
   {
     "id": "26",
@@ -309,7 +729,24 @@
     "price": 175.00,
     "stock": 48,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7776/image_512/%5BSEN.AM2320%5D%20AM-2320%20Temperature%20%26%20Humidity%20Calibrated%20Sensor%20-%20ASAIR%C2%AE%20Original%20Brand?unique=0b5e0df",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AM2320"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AM2320",
+    "features": [
+      "Supports I2C and 1-Wire bus interfaces",
+      "Temperature range: -40°C to +80°C (Accuracy ±0.5°C)",
+      "Humidity range: 0 to 99.9% RH (Accuracy ±3% RH)",
+      "Fully calibrated digital output",
+      "Ultra-low power consumption"
+    ],
+    "applications": [
+      "HVAC and climate control",
+      "Weather stations",
+      "Smart home monitoring",
+      "Automotive climate systems"
+    ],
+    "alternatives": [
+      { "name": "DHT22 / AM2302", "price": "150.00" },
+      { "name": "BME280 Module", "price": "250.00" }
+    ]
   },
   {
     "id": "27",
@@ -321,7 +758,23 @@
     "price": 175.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7760/image_512/%5BKIT.U.DISK.MODULE%5D%20U%20Disk%20Flash%20Disk%20Module%20CH376s%20-%20USB%20Memory%20Reader%20Module?unique=ff5088c",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=CH376S"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=CH376S",
+    "features": [
+      "Supports USB flash drives and SD cards",
+      "Built-in file system support (FAT12, FAT16, FAT32)",
+      "Communication via SPI, I2C, or UART",
+      "Supports 5V or 3.3V operation",
+      "Hardware USB host and device modes"
+    ],
+    "applications": [
+      "Data logging to USB sticks",
+      "Embedded MP3 or media players",
+      "Firmware updates via USB",
+      "Memory expansion for Microcontrollers"
+    ],
+    "alternatives": [
+      { "name": "Micro SD Card Module", "price": "45.00" }
+    ]
   },
   {
     "id": "28",
@@ -333,7 +786,23 @@
     "price": 375.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7754/image_512/%5BKIT.PLC.24V.TO.5V.8CH%5D%20PLC%20Signal%20Level%20Converter%208%20Channel%2024V%20TO%205V%20Optocoupler%20Isolation%20Module%20NPN%20Output?unique=0e4bd7f",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=Optocoupler+Module"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=Optocoupler+Module",
+    "features": [
+      "8-Channel optical isolation via Optocouplers",
+      "Input signal voltage: 24V (PLC standard)",
+      "Output signal voltage: 5V (NPN/Microcontroller standard)",
+      "Conversion frequency up to 80KHz",
+      "LED indicator for each channel state"
+    ],
+    "applications": [
+      "PLC to Microcontroller interfacing",
+      "Industrial signal isolation",
+      "Voltage level shifting",
+      "Noise immunity enhancement in harsh environments"
+    ],
+    "alternatives": [
+      { "name": "4-Channel Optocoupler Module", "price": "180.00" }
+    ]
   },
   {
     "id": "29",
@@ -345,7 +814,23 @@
     "price": 375.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7710/image_512/%5BPIC18F452.I-P%5D%20PIC18F452-I-P?unique=f06f2d7",
-    "datasheet": "https://www.microchip.com/en-us/product/PIC18F452"
+    "datasheet": "https://www.microchip.com/en-us/product/PIC18F452",
+    "features": [
+      "Program Memory: 32 KB Flash",
+      "10-bit Analog-to-Digital Converter (8 channels)",
+      "Hardware Multiplier (8x8 single cycle)",
+      "High-current sink/source (25 mA)",
+      "Through-hole DIP-40 package for prototyping"
+    ],
+    "applications": [
+      "Legacy control systems",
+      "Educational projects",
+      "Custom instrumentation",
+      "Robotics prototyping"
+    ],
+    "alternatives": [
+      { "name": "PIC18F4520-I/P", "price": "165.00" }
+    ]
   },
   {
     "id": "30",
@@ -357,7 +842,24 @@
     "price": 275.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7677/image_512/%5BKIT.ADS1115.ADC%5D%20ADS1115%20-%2016%20Bit%20I2C%20ADC%20Module?unique=ddba9e8",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ADS1115"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ADS1115",
+    "features": [
+      "16-bit high resolution ADC",
+      "4 single-ended or 2 differential inputs",
+      "Programmable Gain Amplifier (PGA) up to x16",
+      "I2C interface with 4 selectable addresses",
+      "Data rate: 8 SPS to 860 SPS"
+    ],
+    "applications": [
+      "High-resolution sensor reading",
+      "Battery voltage monitoring",
+      "Thermocouple measurement",
+      "Portable instrumentation"
+    ],
+    "alternatives": [
+      { "name": "ADS1015 (12-bit ADC)", "price": "180.00" },
+      { "name": "MCP3008 (SPI ADC)", "price": "225.00" }
+    ]
   },
   {
     "id": "31",
@@ -369,7 +871,24 @@
     "price": 20.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7662/image_512/%5BL293D%5D%20L293D%20-%204%20Channel%20Driver%20H-Bridge%20IC?unique=65e04a2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L293D"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L293D",
+    "features": [
+      "Wide Supply-Voltage Range: 4.5 V to 36 V",
+      "600-mA Output Current Per Channel",
+      "Peak Output Current: 1.2 A",
+      "Internal ESD Protection",
+      "High-Noise-Immunity Inputs"
+    ],
+    "applications": [
+      "Stepper motor drivers",
+      "DC motor drivers",
+      "Latching relay drivers",
+      "Solenoid driving"
+    ],
+    "alternatives": [
+      { "name": "SN754410", "price": "35.00" },
+      { "name": "L298N IC", "price": "45.00" }
+    ]
   },
   {
     "id": "32",
@@ -381,7 +900,24 @@
     "price": 140.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7634/image_512/%5BKIT.L298.BIG.RED%5D%20L298%20Big%20Module%20Red%20Board%20%28Dual%20H-Bridge%20Motor%20Driver%20Using%20L298N%29?unique=588aba4",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L298N"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L298N",
+    "features": [
+      "Dual H-bridge driver using L298N IC",
+      "Max driving voltage: 35V",
+      "Max driving current: 2A per channel",
+      "Built-in 5V regulator for logic circuitry",
+      "Large heatsink for thermal protection"
+    ],
+    "applications": [
+      "Robotic car chassis",
+      "Heavy-duty DC motor control",
+      "Bipolar stepper motor driving",
+      "Automated actuators"
+    ],
+    "alternatives": [
+      { "name": "L293D Shield", "price": "90.00" },
+      { "name": "TB6612FNG Module", "price": "85.00" }
+    ]
   },
   {
     "id": "33",
@@ -393,7 +929,23 @@
     "price": 25.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7468/image_512/%5BSS49E%5D%20SS49E%20-%20Linear%20Hall%20Effect%20Sensor?unique=450e21b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS49E"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SS49E",
+    "features": [
+      "Linear analog output",
+      "Operating Voltage: 2.7V to 6.5V",
+      "Output voltage is proportional to magnetic flux density",
+      "Low power consumption (6mA at 5V)",
+      "Low-noise output"
+    ],
+    "applications": [
+      "Current sensing",
+      "Motor control and feedback",
+      "Position sensing",
+      "Magnetic code reading"
+    ],
+    "alternatives": [
+      { "name": "A1302 Linear Hall", "price": "35.00" }
+    ]
   },
   {
     "id": "34",
@@ -405,7 +957,23 @@
     "price": 250.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7271/image_512/%5BKIT.ATTINY85%5D%20ATTINY85%20USB%20Development%20Board?unique=df76f0f",
-    "datasheet": "https://www.microchip.com/en-us/product/ATtiny85"
+    "datasheet": "https://www.microchip.com/en-us/product/ATtiny85",
+    "features": [
+      "Microcontroller: ATtiny85",
+      "8KB Flash Memory (about 6KB after bootloader)",
+      "Plugs directly into USB port (Digispark compatible)",
+      "6 I/O pins (2 shared for USB)",
+      "On-board 5V regulator"
+    ],
+    "applications": [
+      "Wearable electronics",
+      "Miniaturized Arduino projects",
+      "USB keyboard/mouse emulation (BadUSB)",
+      "Simple sensor nodes"
+    ],
+    "alternatives": [
+      { "name": "Arduino Pro Mini", "price": "120.00" }
+    ]
   },
   {
     "id": "35",
@@ -417,7 +985,23 @@
     "price": 85.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7175/image_512/%5BWIRE.DS18B20%5D%20DS18B20%20Waterproof%20Temperature%20Sensor%20-%20Original%20Chip?unique=924355d",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS18B20"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS18B20",
+    "features": [
+      "Stainless steel waterproof probe",
+      "1-Wire digital interface",
+      "Temperature range: -55°C to +125°C",
+      "Adjustable resolution: 9 to 12-bit",
+      "Cable length: 1 meter"
+    ],
+    "applications": [
+      "Aquarium temperature monitoring",
+      "Soil temperature sensing",
+      "Liquid/Water temperature control",
+      "Industrial HVAC systems"
+    ],
+    "alternatives": [
+      { "name": "NTC Thermistor 10K Probe", "price": "25.00" }
+    ]
   },
   {
     "id": "36",
@@ -429,7 +1013,24 @@
     "price": 40.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7104/image_512/%5BSEN.BPW34%5D%20BPW34%20Photodiode%20-%20High%20Sensitivity%20Light%20Sensor%20%D9%81%D9%88%D8%AA%D9%88%D8%AA%D8%B1%D8%A7%D9%86%D8%B2%D8%B3%D8%AA%D9%88%D8%B1%20-%20%D8%AD%D8%B3%D8%A7%D8%B3%20%D8%B6%D9%88%D8%A6%D9%8A%20%D8%AF%D9%82%D9%8A%D9%82?unique=8b30576",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=BPW34"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=BPW34",
+    "features": [
+      "High photo sensitivity",
+      "Radiant sensitive area: 7.5 mm²",
+      "Fast response times",
+      "Angle of half sensitivity: ±65°",
+      "Suitable for visible and near IR radiation"
+    ],
+    "applications": [
+      "Ambient light sensors",
+      "IR remote control receivers",
+      "Laser beam alignment",
+      "Optical switches"
+    ],
+    "alternatives": [
+      { "name": "LDR (Light Dependent Resistor)", "price": "5.00" },
+      { "name": "PT334-6C Phototransistor", "price": "10.00" }
+    ]
   },
   {
     "id": "37",
@@ -441,7 +1042,23 @@
     "price": 225.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7098/image_512/%5BMCP3008%5D%20MCP3008-I-P?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/MCP3008"
+    "datasheet": "https://www.microchip.com/en-us/product/MCP3008",
+    "features": [
+      "10-bit resolution",
+      "8 single-ended or 4 pseudo-differential inputs",
+      "SPI serial interface",
+      "200 ksps sample rate at 5V",
+      "Low power CMOS technology"
+    ],
+    "applications": [
+      "Raspberry Pi analog input expansion",
+      "Sensor interface arrays",
+      "Data acquisition systems",
+      "Multi-channel voltage monitoring"
+    ],
+    "alternatives": [
+      { "name": "ADS1115 Module", "price": "275.00" }
+    ]
   },
   {
     "id": "38",
@@ -453,7 +1070,23 @@
     "price": 25.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7097/image_512/%5B74LS85%5D%20IC%207485%20-%204-Bit%20Magnitude%20Logic%20Comparator%20-%20Original?unique=782ef81",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7485"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7485",
+    "features": [
+      "Compares two 4-bit binary or BCD words",
+      "Provides A>B, A<B, and A=B outputs",
+      "Expandable to any word length",
+      "Typical power dissipation: 52 mW",
+      "Fully TTL compatible"
+    ],
+    "applications": [
+      "Digital sorting networks",
+      "CPU ALU logic",
+      "Password checking circuits",
+      "Binary comparison algorithms"
+    ],
+    "alternatives": [
+      { "name": "CD4063 (CMOS Comparator)", "price": "20.00" }
+    ]
   },
   {
     "id": "39",
@@ -465,7 +1098,23 @@
     "price": 40.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7097/image_512/%5B74LS85%5D%20IC%207485%20-%204-Bit%20Magnitude%20Logic%20Comparator%20-%20Original?unique=782ef81",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7483"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7483",
+    "features": [
+      "4-bit binary addition",
+      "Fast carry generation for high-speed operation",
+      "Full-carry look-ahead across the four bits",
+      "Standard TTL operation",
+      "Drives up to 10 TTL loads"
+    ],
+    "applications": [
+      "Arithmetic Logic Units (ALU)",
+      "Digital calculators",
+      "Binary counters",
+      "Signal processing hardware"
+    ],
+    "alternatives": [
+      { "name": "CD4008 (CMOS Full Adder)", "price": "22.00" }
+    ]
   },
   {
     "id": "40",
@@ -477,9 +1126,25 @@
     "price": 15.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7095/image_512/%5B74HC20%5D%20IC%207420%20-%204%20input%20NAND%20gate%20-%20Original?unique=023548a",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7420"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7420",
+    "features": [
+      "Dual 4-input NAND gate",
+      "Wide operating voltage range",
+      "High noise immunity",
+      "Low power consumption",
+      "Industry standard 74xx series pinout"
+    ],
+    "applications": [
+      "Logic gate combinations",
+      "Address decoding",
+      "Multiple condition trigger circuits",
+      "Oscillator implementation"
+    ],
+    "alternatives": [
+      { "name": "CD4012 (CMOS Dual 4-input NAND)", "price": "15.00" }
+    ]
   },
-  {
+ {
     "id": "41",
     "name": "DHT-11",
     "category": "Sensors",
@@ -489,7 +1154,24 @@
     "price": 65.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7093/image_512/%5BSEN.DHT11%5D%20DHT-11%20Temperature%20%26%20Humidity%20Sensor%20-%20ASAIR%C2%AE%20Original%20Brand?unique=c09481f",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DHT11"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DHT11",
+    "features": [
+      "Operating Voltage: 3.3V to 5.5V",
+      "Humidity measuring range: 20% to 90% RH (±5% accuracy)",
+      "Temperature measuring range: 0°C to 50°C (±2°C accuracy)",
+      "Digital 1-wire single-bus output",
+      "Low cost and excellent long-term stability"
+    ],
+    "applications": [
+      "Basic weather stations",
+      "Home automation and climate control",
+      "Environmental monitoring",
+      "Educational Arduino projects"
+    ],
+    "alternatives": [
+      { "name": "DHT-22 (AM2302)", "price": "275.00" },
+      { "name": "AM-2320 Sensor", "price": "175.00" }
+    ]
   },
   {
     "id": "42",
@@ -501,7 +1183,24 @@
     "price": 275.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7092/image_512/%5BSEN.DHT22%5D%20DHT-22%20%28AM2302%29%20Precision%20Temperature%20%26%20Humidity%20Sensor%20-%20ASAIR%C2%AE%20Original%20Brand?unique=a6e5c5a",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DHT22"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DHT22",
+    "features": [
+      "High precision calibration",
+      "Humidity measuring range: 0% to 100% RH (±2% accuracy)",
+      "Temperature measuring range: -40°C to 80°C (±0.5°C accuracy)",
+      "1-wire digital interface",
+      "Ultra-low power consumption"
+    ],
+    "applications": [
+      "Medical equipment and incubators",
+      "Precision weather stations",
+      "Server room monitoring",
+      "Agricultural climate control"
+    ],
+    "alternatives": [
+      { "name": "DHT-11", "price": "65.00" },
+      { "name": "BME280 Module", "price": "250.00" }
+    ]
   },
   {
     "id": "43",
@@ -513,7 +1212,24 @@
     "price": 75.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7087/image_512/%5BKIT.HX711.ADC%5D%20HX711%20Weight%20Scale%20Analog-to-Digital%20Converter%20%28ADC%29%2024-bit?unique=73df6bc",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=HX711"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=HX711",
+    "features": [
+      "24-bit high precision ADC",
+      "Two selectable differential input channels",
+      "On-chip active low noise PGA (gain of 32, 64, or 128)",
+      "Simple digital control and serial interface",
+      "Selectable 10SPS or 80SPS output data rate"
+    ],
+    "applications": [
+      "Digital weigh scales",
+      "Load cell reading",
+      "Industrial process control",
+      "Strain gauge bridges"
+    ],
+    "alternatives": [
+      { "name": "ADS1232 Module", "price": "375.00" },
+      { "name": "ADS1115 Module", "price": "275.00" }
+    ]
   },
   {
     "id": "44",
@@ -525,7 +1241,24 @@
     "price": 75.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7084/image_512/%5BKIT.L298.RED%5D%20L298%20Module%20Red%20Board%20%28Dual%20H-Bridge%20Motor%20Driver%20Using%20L298N%29?unique=9372471",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L298N"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=L298N",
+    "features": [
+      "Dual H-Bridge motor driver",
+      "Motor supply voltage: 7V to 35V",
+      "Maximum continuous current: 2A per channel",
+      "Onboard 5V voltage regulator (78M05)",
+      "High power heatsink included"
+    ],
+    "applications": [
+      "Robotic smart cars",
+      "Driving heavy DC motors",
+      "Driving bipolar stepper motors",
+      "Automated curtain controls"
+    ],
+    "alternatives": [
+      { "name": "L293D Expansion Board", "price": "75.00" },
+      { "name": "TB6612FNG Module", "price": "85.00" }
+    ]
   },
   {
     "id": "45",
@@ -537,7 +1270,24 @@
     "price": 30.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7013/image_512/%5B74HC193%5D%20IC%2074193%20-%20Synchronous%204%20Bit%20Binary%20Counters%20With%20Clear%20-%20Original?unique=cfbdcf3",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74193"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74193",
+    "features": [
+      "Synchronous up/down binary counting",
+      "Asynchronous clear and preset inputs",
+      "Cascading circuitry provided internally",
+      "Operating Voltage Range: 2.0V to 6.0V",
+      "Outputs can drive up to 10 LSTTL loads"
+    ],
+    "applications": [
+      "Digital timers and clocks",
+      "Frequency dividers",
+      "Position encoders",
+      "Up/down counting circuits"
+    ],
+    "alternatives": [
+      { "name": "CD4029 (CMOS Counter)", "price": "20.00" },
+      { "name": "74HC192 (Decade Counter)", "price": "30.00" }
+    ]
   },
   {
     "id": "46",
@@ -549,7 +1299,23 @@
     "price": 350.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7012/image_512/%5BKIT.ATMEGA128%5D%20ATmega128A-AU%20Converter%20With%20Header%20%2B%20Chip?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega128A"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega128A",
+    "features": [
+      "High-performance, Low-power AVR 8-bit Microcontroller",
+      "128 KB In-System Reprogrammable Flash",
+      "4 KB EEPROM and 4 KB Internal SRAM",
+      "53 Programmable I/O lines",
+      "JTAG (IEEE 1149.1 Compliant) Interface"
+    ],
+    "applications": [
+      "Advanced robotics and automation",
+      "Industrial control systems",
+      "IoT Gateway devices",
+      "Heavy-duty DIY electronics"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA2560-16U", "price": "595.00" }
+    ]
   },
   {
     "id": "47",
@@ -561,7 +1327,23 @@
     "price": 95.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7011/image_512/%5BACS758LCB.050B%5D%20ACS758LCB-050B%20-%20AC%20Current%20Sensor%2050A?unique=ee488c7",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ACS758"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=ACS758",
+    "features": [
+      "Industry-leading noise performance",
+      "120 kHz typical bandwidth",
+      "Bidirectional 50A current sensing",
+      "100 μΩ primary conductor resistance for low power loss",
+      "Galvanically isolated output"
+    ],
+    "applications": [
+      "Motor control and monitoring",
+      "Power supplies and DC-DC converters",
+      "Solar inverter current measurement",
+      "Overcurrent fault protection"
+    ],
+    "alternatives": [
+      { "name": "ACS712-30A Module", "price": "65.00" }
+    ]
   },
   {
     "id": "48",
@@ -573,7 +1355,23 @@
     "price": 65.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/7006/image_512/%5BKIT.RTC.DS1307.I2C%5D%20RTC%20-%20DS1307%2B%20EEPROM%20AT24C32%20I2C%20Module%20With%20Battery?unique=7caddec",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS1307"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=DS1307",
+    "features": [
+      "Real-Time Clock counts Seconds, Minutes, Hours, Date, Month, and Year",
+      "Leap-year compensation up to year 2100",
+      "I2C serial interface",
+      "56-Byte battery-backed RAM",
+      "Includes AT24C32 32K I2C EEPROM on board"
+    ],
+    "applications": [
+      "Digital clocks and calendars",
+      "Data logging (time stamping)",
+      "Attendance systems",
+      "Event scheduling applications"
+    ],
+    "alternatives": [
+      { "name": "DS3231 + EEPROM AT24C32", "price": "135.00" }
+    ]
   },
   {
     "id": "49",
@@ -585,7 +1383,24 @@
     "price": 30.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6893/image_512/%5B74HC76.ORIGINAL%5D%20IC%207476%20-%20Dual%20JK%20Flip%20Flop%20with%20Preset%20and%20Clear%20-%20Original?unique=a31437b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7476"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7476",
+    "features": [
+      "Dual J-K Flip-Flops in a single package",
+      "Individual J, K, Clock, Preset, and Clear inputs",
+      "Triggered on the falling edge of the clock pulse",
+      "Operating voltage: 5V typical",
+      "Standard TTL logic levels"
+    ],
+    "applications": [
+      "Shift registers",
+      "Binary counters",
+      "Frequency division",
+      "State machine design"
+    ],
+    "alternatives": [
+      { "name": "CD4027 (CMOS Dual J-K)", "price": "15.00" },
+      { "name": "IC 7473 (Dual J-K without preset)", "price": "25.00" }
+    ]
   },
   {
     "id": "50",
@@ -597,7 +1412,24 @@
     "price": 15.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6892/image_512/%5B74HC08.ORIGINAL%5D%20IC%207408%20-%20Quad%202%20input%20AND%20Gates%20-%20Original?unique=f63f10f",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7408"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7408",
+    "features": [
+      "Four independent 2-input AND gates",
+      "Wide operating voltage range (2.0V to 6.0V)",
+      "High noise immunity",
+      "Outputs can drive up to 10 LSTTL loads",
+      "Low power consumption"
+    ],
+    "applications": [
+      "Basic digital logic gating",
+      "Address decoding",
+      "Condition matching circuits",
+      "Educational logic boards"
+    ],
+    "alternatives": [
+      { "name": "CD4081 (CMOS AND Gate)", "price": "12.00" },
+      { "name": "IC 7408 (Copy)", "price": "10.00" }
+    ]
   },
   {
     "id": "51",
@@ -609,7 +1441,24 @@
     "price": 145.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6845/image_512/%5BIR2111%5D%20IR2111?unique=d3a2076",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=IR2111"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=IR2111",
+    "features": [
+      "Floating channel designed for bootstrap operation up to +600V",
+      "Gate drive supply range from 10V to 20V",
+      "Undervoltage lockout for both channels",
+      "Cross-conduction prevention logic",
+      "Matched propagation delay for both channels"
+    ],
+    "applications": [
+      "Half-bridge inverters",
+      "Motor drives",
+      "DC-DC converters",
+      "Induction heating applications"
+    ],
+    "alternatives": [
+      { "name": "IR2184", "price": "200.00" },
+      { "name": "IR2104", "price": "140.00" }
+    ]
   },
   {
     "id": "52",
@@ -621,7 +1470,24 @@
     "price": 75.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6844/image_512/%5BTLP521.4%5D%20TLP521-4?unique=3dedf17",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TLP521"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TLP521",
+    "features": [
+      "4 isolated channels in a single DIP-16 package",
+      "High isolation voltage (2500 Vrms minimum)",
+      "Current Transfer Ratio (CTR) from 50% to 600%",
+      "Input diode forward voltage: 1.15V typical",
+      "Direct TTL/CMOS compatibility"
+    ],
+    "applications": [
+      "Programmable Logic Controllers (PLCs)",
+      "Switching power supplies",
+      "Signal transmission between different voltage systems",
+      "Noise isolation in measuring instruments"
+    ],
+    "alternatives": [
+      { "name": "PC817 4-Channel Board", "price": "60.00" },
+      { "name": "LTV-844", "price": "85.00" }
+    ]
   },
   {
     "id": "53",
@@ -633,7 +1499,24 @@
     "price": 450.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6826/image_512/%5BAD620AN%5D%20AD620AN%20-%20Low%20Cost%20Low%20Power%20Instrumentation%20Amplifier?unique=2e8fa79",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD620AN"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD620AN",
+    "features": [
+      "Gain set with one external resistor (Gain range: 1 to 10000)",
+      "Low power supply current: 1.3 mA maximum",
+      "Low offset voltage: 50 μV maximum",
+      "Low input bias current: 1.0 nA maximum",
+      "Wide power supply range (±2.3 V to ±18 V)"
+    ],
+    "applications": [
+      "Weigh scales and strain gauges",
+      "ECG and medical instrumentation",
+      "Transducer and sensor interfaces",
+      "Data acquisition systems"
+    ],
+    "alternatives": [
+      { "name": "INA128", "price": "350.00" },
+      { "name": "LM358 (For basic amplification)", "price": "5.00" }
+    ]
   },
   {
     "id": "54",
@@ -645,7 +1528,23 @@
     "price": 595.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6825/image_512/%5BATMEGA2560.16AU%5D%20ATMEGA2560-16U?unique=973045f",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega2560"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega2560",
+    "features": [
+      "256 KB of In-System Programmable Flash Memory",
+      "8 KB SRAM and 4 KB EEPROM",
+      "86 Programmable I/O lines",
+      "16-channel 10-bit ADC",
+      "4 Hardware UARTs (Serial Ports)"
+    ],
+    "applications": [
+      "3D Printer controllers (RAMPS)",
+      "Complex robotics",
+      "Industrial automation panels",
+      "IoT Master Node hubs"
+    ],
+    "alternatives": [
+      { "name": "ATmega128A", "price": "350.00" }
+    ]
   },
   {
     "id": "55",
@@ -657,7 +1556,24 @@
     "price": 28.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6779/image_512/%5B74HC153%5D%20IC%2074153%20-%20Dual%204%20to%201%20Line%20Multiplexer%20-%20Original?unique=b7b9e20",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74153"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74153",
+    "features": [
+      "Dual 4-line to 1-line multiplexers",
+      "Common select inputs for both multiplexers",
+      "Separate strobe (enable) inputs for each section",
+      "Typical propagation delay: 14 ns",
+      "Fully compatible with most TTL and CMOS logic"
+    ],
+    "applications": [
+      "Data routing and switching",
+      "Signal multiplexing in telecom",
+      "Boolean function generation",
+      "Memory addressing schemes"
+    ],
+    "alternatives": [
+      { "name": "CD4052 (CMOS analog mux)", "price": "15.00" },
+      { "name": "74HC4067 (16-channel)", "price": "80.00" }
+    ]
   },
   {
     "id": "56",
@@ -669,7 +1585,24 @@
     "price": 50.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6778/image_512/%5BTLP250%5D%20TLP250?unique=c2e8bad",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TLP250"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TLP250",
+    "features": [
+      "Maximum output current: ±1.5A",
+      "Wide supply voltage range: 10V to 35V",
+      "Input threshold current: 5mA max",
+      "High isolation voltage: 2500Vrms",
+      "Switching time: 0.5 μs max"
+    ],
+    "applications": [
+      "IGBT gate driving",
+      "Power MOSFET gate driving",
+      "Inverter circuits for air conditioners",
+      "Induction heating controls"
+    ],
+    "alternatives": [
+      { "name": "HCPL3120", "price": "60.00" },
+      { "name": "IR2110 (Non-isolated)", "price": "180.00" }
+    ]
   },
   {
     "id": "57",
@@ -681,7 +1614,24 @@
     "price": 4.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6715/image_512/%5BNE555.COPY%5D%20NE555P%20-%20Timer%20IC%20-%20Copy?unique=e2662b8",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=NE555P"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=NE555P",
+    "features": [
+      "Timing from microseconds to hours",
+      "Astable or monostable operation",
+      "Adjustable duty cycle",
+      "Output can source or sink up to 200mA",
+      "TTL compatible output"
+    ],
+    "applications": [
+      "Precision time delay generation",
+      "Pulse width modulation (PWM)",
+      "LED flashers and sirens",
+      "Sequential timing circuits"
+    ],
+    "alternatives": [
+      { "name": "NE555 (Original)", "price": "10.00" },
+      { "name": "LM556 (Dual Timer)", "price": "15.00" }
+    ]
   },
   {
     "id": "58",
@@ -693,7 +1643,24 @@
     "price": 195.00,
     "stock": 0,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6676/image_512/%5BAD7705B%5D%20AD7705B%20-%2016%20Bit%20Sigma-Delta%20Analog%20to%20Digitals%20Converter?unique=8883569",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD7705"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=AD7705",
+    "features": [
+      "16-bit resolution with no missing codes",
+      "Two fully differential input channels",
+      "Programmable gain front end (Gain from 1 to 128)",
+      "3-wire serial interface (SPI compatible)",
+      "Low power operation (3V or 5V)"
+    ],
+    "applications": [
+      "Industrial process control",
+      "Weigh scales and load cells",
+      "Portable and battery-powered instrumentation",
+      "Smart transmitters"
+    ],
+    "alternatives": [
+      { "name": "ADS1115", "price": "275.00" },
+      { "name": "HX711", "price": "75.00" }
+    ]
   },
   {
     "id": "59",
@@ -705,7 +1672,24 @@
     "price": 125.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6661/image_512/%5BUSB.TO.TTL.CP2102%5D%20USB%20to%20Serial%20TTL%20Converter%20Module%20CP2102%20Chip?unique=e89aa59",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=CP2102"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=CP2102",
+    "features": [
+      "Single-chip USB to UART data transfer",
+      "Integrated USB transceiver (no external resistors required)",
+      "Supports 3.3V and 5V logic levels",
+      "Baud rates: 300 bps to 1 Mbps",
+      "Includes 3.3V voltage regulator"
+    ],
+    "applications": [
+      "Programming Arduino Pro Mini / ESP8266 / ESP32",
+      "USB to RS-232 adapters",
+      "Debugging embedded systems via terminal",
+      "Router firmware flashing"
+    ],
+    "alternatives": [
+      { "name": "CH340G USB to TTL", "price": "70.00" },
+      { "name": "FT232RL Module", "price": "150.00" }
+    ]
   },
   {
     "id": "60",
@@ -717,9 +1701,26 @@
     "price": 75.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6632/image_512/%5BMCP2515%5D%20MCP2515-I-P?unique=bf7614b",
-    "datasheet": "https://www.microchip.com/en-us/product/MCP2515"
+    "datasheet": "https://www.microchip.com/en-us/product/MCP2515",
+    "features": [
+      "Implements CAN V2.0B at 1 Mb/s",
+      "High-speed SPI interface (up to 10 MHz)",
+      "3 transmit buffers with prioritization",
+      "2 receive buffers with 6 byte filter masks",
+      "Low-power CMOS technology"
+    ],
+    "applications": [
+      "Automotive OBD-II networks",
+      "Industrial automation (CANOpen)",
+      "Marine control networks",
+      "Elevator control systems"
+    ],
+    "alternatives": [
+      { "name": "TJA1050 (CAN Transceiver)", "price": "40.00" },
+      { "name": "SJA1000", "price": "120.00" }
+    ]
   },
-  {
+{
     "id": "61",
     "name": "ATMEGA328PU",
     "category": "Microcontrollers",
@@ -729,7 +1730,24 @@
     "price": 220.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6631/image_512/%5BATMEGA328%5D%20ATMEGA328PU?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega328p"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega328p",
+    "features": [
+      "High Performance, Low Power AVR 8-Bit Microcontroller",
+      "32 KB In-System Self-Programmable Flash memory",
+      "2 KB Internal SRAM and 1 KB EEPROM",
+      "23 Programmable I/O Lines",
+      "Operating Voltage: 1.8V to 5.5V"
+    ],
+    "applications": [
+      "Arduino Uno standalone projects",
+      "Sensor node controllers",
+      "Industrial automation",
+      "Home appliance control"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA328 Boot Loaded", "price": "225.00" },
+      { "name": "ATMEGA8A-PU", "price": "185.00" }
+    ]
   },
   {
     "id": "62",
@@ -741,7 +1759,23 @@
     "price": 225.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6620/image_512/%5BARDUINO.ATMEGA328%5D%20ATMEGA328%20Boot%20Loaded?unique=b35fa0c",
-    "datasheet": "https://www.ram-e-shop.com/web/image/product.template/6620/image_512/%5BARDUINO.ATMEGA328%5D%20ATMEGA328%20Boot%20Loaded?unique=b35fa0c"
+    "datasheet": "https://www.ram-e-shop.com/web/image/product.template/6620/image_512/%5BARDUINO.ATMEGA328%5D%20ATMEGA328%20Boot%20Loaded?unique=b35fa0c",
+    "features": [
+      "Pre-flashed with Arduino UNO Bootloader (Optiboot)",
+      "Ready to be programmed via UART/FTDI without an ISP programmer",
+      "32 KB Flash memory (0.5 KB used by bootloader)",
+      "16 MHz clock speed support",
+      "Breadboard friendly standard DIP-28 package"
+    ],
+    "applications": [
+      "Custom Arduino on a breadboard",
+      "Replacing damaged chips on Arduino Uno boards",
+      "Rapid prototyping",
+      "Educational DIY kits"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA328PU (Blank)", "price": "220.00" }
+    ]
   },
   {
     "id": "63",
@@ -753,7 +1787,24 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6537/image_512/%5B74HC161%5D%20IC%2074161%20-%20Presettable%20Synchronous%204%20bit%20Binary%20Counter?unique=1aa3f1b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74161"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74161",
+    "features": [
+      "Internal look-ahead for fast counting",
+      "Carry output for n-bit cascading",
+      "Synchronous counting and asynchronous clear",
+      "High speed CMOS logic",
+      "Operating voltage: 2.0V to 6.0V"
+    ],
+    "applications": [
+      "Digital clocks and timers",
+      "Frequency dividers",
+      "Program counters in CPU design",
+      "State machines"
+    ],
+    "alternatives": [
+      { "name": "IC 74193 (Up/Down Counter)", "price": "30.00" },
+      { "name": "CD4029", "price": "20.00" }
+    ]
   },
   {
     "id": "64",
@@ -765,7 +1816,24 @@
     "price": 230.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6528/image_512/%5BATMEGA32A.PU%5D%20ATMEGA32A-U?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega32A"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega32A",
+    "features": [
+      "32 KB of In-System Programmable Flash",
+      "2 KB Internal SRAM",
+      "32 Programmable I/O Lines",
+      "JTAG Interface for on-chip debugging",
+      "8-channel, 10-bit ADC"
+    ],
+    "applications": [
+      "Advanced university graduation projects",
+      "Industrial automation controllers",
+      "Robotics control boards",
+      "Multi-sensor data loggers"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA16A-U", "price": "195.00" },
+      { "name": "PIC18F452-I/P", "price": "375.00" }
+    ]
   },
   {
     "id": "65",
@@ -777,7 +1845,24 @@
     "price": 10.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6523/image_512/%5BTL431%5D%20TL431?unique=c3864c3",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TL431"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=TL431",
+    "features": [
+      "Programmable Output Voltage to 36V",
+      "Low Dynamic Output Impedance: 0.22 Ω",
+      "Sink-Current Capability: 1 mA to 100 mA",
+      "High accuracy reference voltage (2.495V typical)",
+      "Excellent temperature stability"
+    ],
+    "applications": [
+      "Switched-Mode Power Supplies (SMPS) feedback",
+      "Adjustable voltage and current references",
+      "Over-voltage crowbar circuits",
+      "Precision zener diode replacement"
+    ],
+    "alternatives": [
+      { "name": "LM317 (Linear Regulator)", "price": "15.00" },
+      { "name": "5.1V Zener Diode", "price": "2.00" }
+    ]
   },
   {
     "id": "66",
@@ -789,7 +1874,24 @@
     "price": 25.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6485/image_512/%5BOP07%5D%20OP07CP?unique=72ce336",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=OP07CP"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=OP07CP",
+    "features": [
+      "Ultra-low offset voltage: 75 µV maximum",
+      "Low input bias current: ±4 nA",
+      "High open-loop gain: 200 V/mV",
+      "Wide supply voltage range: ±3V to ±18V",
+      "Excellent long-term stability"
+    ],
+    "applications": [
+      "Precision measurement equipment",
+      "Strain gauge and load cell amplifiers",
+      "Medical instrumentation (ECG/EEG)",
+      "Low-level signal amplification"
+    ],
+    "alternatives": [
+      { "name": "AD620AN", "price": "450.00" },
+      { "name": "LM358 (General Purpose)", "price": "5.00" }
+    ]
   },
   {
     "id": "67",
@@ -801,7 +1903,24 @@
     "price": 28.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6455/image_512/%5B4047%5D%20IC%204047%20-%20Low-Power%20Monostable-Astable%20Multivibrator?unique=7721534",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4047"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4047",
+    "features": [
+      "Operates in monostable or astable modes",
+      "Low power consumption (CMOS technology)",
+      "Wide operating voltage: 3V to 15V",
+      "True and complemented buffered outputs",
+      "External RC components determine pulse width"
+    ],
+    "applications": [
+      "Inverter circuits (DC to AC)",
+      "Frequency division and multiplication",
+      "Time delay circuits",
+      "Square wave generation"
+    ],
+    "alternatives": [
+      { "name": "NE555P", "price": "4.00" },
+      { "name": "CD4047BE", "price": "25.00" }
+    ]
   },
   {
     "id": "68",
@@ -813,7 +1932,24 @@
     "price": 35.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6445/image_512/%5B74HC283%5D%20IC%2074283%20-%204%20bit%20Binary%20Full%20Adder%20with%20Fast%20Carry%20-%20Original?unique=c2fe9e9",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74283"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74283",
+    "features": [
+      "4-bit binary full adder",
+      "Full look-ahead carry generation across all 4 bits",
+      "High speed operation (typical 16ns delay)",
+      "Standard TTL logic levels",
+      "Cascadable for n-bit additions"
+    ],
+    "applications": [
+      "Arithmetic Logic Units (ALUs) in DIY CPUs",
+      "High-speed binary addition",
+      "Digital calculators",
+      "Signal processing circuits"
+    ],
+    "alternatives": [
+      { "name": "IC 7483 - Original", "price": "40.00" },
+      { "name": "CD4008", "price": "22.00" }
+    ]
   },
   {
     "id": "69",
@@ -825,7 +1961,24 @@
     "price": 10.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6412/image_512/%5BMOC3022%5D%20MOC3022?unique=3e43fe8",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MOC3022"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=MOC3022",
+    "features": [
+      "Non-zero crossing (Random Phase) triac driver",
+      "High isolation voltage (5300V AC RMS)",
+      "Peak blocking voltage: 400V",
+      "Low trigger current (10mA typical)",
+      "Compact DIP-6 package"
+    ],
+    "applications": [
+      "Dimmer circuits for AC loads",
+      "Solid-State Relays (SSRs)",
+      "AC motor drives and speed controls",
+      "Incandescent lamp switching"
+    ],
+    "alternatives": [
+      { "name": "MOC3021 (15mA Trigger)", "price": "10.00" },
+      { "name": "MOC3041 (Zero-Crossing)", "price": "12.00" }
+    ]
   },
   {
     "id": "70",
@@ -837,7 +1990,23 @@
     "price": 185.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6399/image_512/%5BATMEGA8A%5D%20ATMEGA8A-PU?unique=c20f208",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega8A"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega8A",
+    "features": [
+      "8 KB In-System Programmable Flash memory",
+      "1 KB SRAM and 512 Bytes EEPROM",
+      "Up to 16 MHz operating frequency",
+      "23 Programmable I/O lines",
+      "6-channel, 10-bit ADC"
+    ],
+    "applications": [
+      "Basic embedded control systems",
+      "Custom sensor interfaces",
+      "Motor control applications",
+      "Educational microcontroller training"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA328PU", "price": "220.00" }
+    ]
   },
   {
     "id": "71",
@@ -849,7 +2018,23 @@
     "price": 30.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6398/image_512/%5B4072%5D%20IC%204072%20-%20Dual%204%20input%20OR%20Gate?unique=8f58e68",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4072"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4072",
+    "features": [
+      "Dual independent 4-input OR gates",
+      "Wide operating voltage: 3V to 15V",
+      "High noise immunity (CMOS characteristics)",
+      "Standardized symmetrical output characteristics",
+      "Low power consumption"
+    ],
+    "applications": [
+      "Multiple condition alarm triggers",
+      "Digital logic combinations",
+      "Signal multiplexing logic",
+      "Switching circuits"
+    ],
+    "alternatives": [
+      { "name": "IC 7432 (Quad 2-input OR)", "price": "10.00" }
+    ]
   },
   {
     "id": "72",
@@ -861,7 +2046,23 @@
     "price": 195.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6346/image_512/%5BATMEGA16%5D%20ATMEGA16A-U?unique=d4d7424",
-    "datasheet": "https://www.microchip.com/en-us/product/ATmega16A"
+    "datasheet": "https://www.microchip.com/en-us/product/ATmega16A",
+    "features": [
+      "16 KB In-System Programmable Flash",
+      "1 KB Internal SRAM and 512 Bytes EEPROM",
+      "32 Programmable I/O Lines",
+      "JTAG interface for boundary-scan capabilities",
+      "8-channel, 10-bit ADC"
+    ],
+    "applications": [
+      "General purpose embedded applications",
+      "Data logging instruments",
+      "University engineering projects",
+      "Industrial I/O expansion"
+    ],
+    "alternatives": [
+      { "name": "ATMEGA32A-U", "price": "230.00" }
+    ]
   },
   {
     "id": "73",
@@ -873,7 +2074,24 @@
     "price": 125.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6318/image_512/%5BMCP2551.I-P%5D%20MCP2551-I-P?unique=80038a6",
-    "datasheet": "https://www.microchip.com/en-us/product/MCP2551"
+    "datasheet": "https://www.microchip.com/en-us/product/MCP2551",
+    "features": [
+      "Supports 1 Mb/s operation",
+      "Implements ISO-11898 standard physical layer requirements",
+      "Up to 112 nodes can be connected",
+      "Internally short-circuit protected to 24V",
+      "Low-current standby operation"
+    ],
+    "applications": [
+      "Automotive OBD-II scanning devices",
+      "Industrial CANOpen networks",
+      "Elevator and HVAC control nodes",
+      "Robotic internal communication buses"
+    ],
+    "alternatives": [
+      { "name": "TJA1050", "price": "40.00" },
+      { "name": "MCP2515 (Controller)", "price": "75.00" }
+    ]
   },
   {
     "id": "74",
@@ -885,7 +2103,24 @@
     "price": 145.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6318/image_512/%5BMCP2551.I-P%5D%20MCP2551-I-P?unique=80038a6",
-    "datasheet": "https://www.microchip.com/en-us/product/MCP3202"
+    "datasheet": "https://www.microchip.com/en-us/product/MCP3202",
+    "features": [
+      "12-bit resolution ADC",
+      "Dual-channel single-ended or single-channel pseudo-differential input",
+      "SPI serial interface",
+      "100 ksps max sampling rate at 5V",
+      "Low power CMOS technology (500nA standby)"
+    ],
+    "applications": [
+      "Sensor interface to Raspberry Pi",
+      "Battery-operated data acquisition",
+      "Process control monitoring",
+      "Precision analog measurements"
+    ],
+    "alternatives": [
+      { "name": "MCP3008-I/P (10-bit, 8-channel)", "price": "225.00" },
+      { "name": "ADS1115 (16-bit)", "price": "275.00" }
+    ]
   },
   {
     "id": "75",
@@ -897,7 +2132,23 @@
     "price": 20.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6237/image_512/%5B4077%5D%20IC%204077%20-%20Quad%20Exclusive%20NOR%20XNOR%20Gate?unique=6dc9bd2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4077"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4077",
+    "features": [
+      "Quad 2-input Exclusive-NOR (XNOR) gates",
+      "High voltage type (20V Rating)",
+      "Standardized symmetrical output characteristics",
+      "100% tested for quiescent current at 20V",
+      "Wide operating voltage: 3V to 18V"
+    ],
+    "applications": [
+      "Logical comparators",
+      "Parity generators and checkers",
+      "Phase detectors",
+      "Adders/subtractors"
+    ],
+    "alternatives": [
+      { "name": "CD4070 (Quad XOR)", "price": "20.00" }
+    ]
   },
   {
     "id": "76",
@@ -909,7 +2160,23 @@
     "price": 20.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6237/image_512/%5B4077%5D%20IC%204077%20-%20Quad%20Exclusive%20NOR%20XNOR%20Gate?unique=6dc9bd2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4071"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4071",
+    "features": [
+      "Quadruple 2-input OR gate",
+      "Medium-speed operation (tpd = 60 ns typ at 10V)",
+      "High noise immunity",
+      "Wide supply voltage range (3V to 15V)",
+      "Low power dissipation"
+    ],
+    "applications": [
+      "Digital logic circuit design",
+      "Signal multiplexing",
+      "Trigger logic gating",
+      "Educational prototyping"
+    ],
+    "alternatives": [
+      { "name": "IC 7432 (TTL OR Gate)", "price": "10.00" }
+    ]
   },
   {
     "id": "77",
@@ -921,7 +2188,24 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6237/image_512/%5B4077%5D%20IC%204077%20-%20Quad%20Exclusive%20NOR%20XNOR%20Gate?unique=6dc9bd2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4069"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4069",
+    "features": [
+      "Six independent NOT gates (Inverters)",
+      "Standard CMOS logic levels",
+      "High noise immunity",
+      "Wide operating voltage: 3V to 15V",
+      "Medium speed operation"
+    ],
+    "applications": [
+      "Logic signal inversion",
+      "Simple square-wave oscillators",
+      "Switch debouncing",
+      "Digital circuit design"
+    ],
+    "alternatives": [
+      { "name": "IC 7404 (Copy)", "price": "10.00" },
+      { "name": "IC 4049 (Hex Buffer)", "price": "18.00" }
+    ]
   },
   {
     "id": "78",
@@ -933,7 +2217,23 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6234/image_512/%5B4049%5D%20IC%204049%20-%20Hex%20Buffer-Converter?unique=6dc9bd2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4049"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4049",
+    "features": [
+      "Hex inverting buffer/converter",
+      "High sink current for driving 2 TTL loads",
+      "High-to-low logic level conversion capability",
+      "Wide supply voltage range: 3V to 18V",
+      "Maximum input current of 1µA at 18V"
+    ],
+    "applications": [
+      "CMOS to TTL logic level shifting",
+      "High sink-current LED driving",
+      "Signal buffering to prevent loading",
+      "Logic inversion"
+    ],
+    "alternatives": [
+      { "name": "IC 7404 (Hex Inverter TTL)", "price": "10.00" }
+    ]
   },
   {
     "id": "79",
@@ -945,7 +2245,23 @@
     "price": 15.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6234/image_512/%5B4049%5D%20IC%204049%20-%20Hex%20Buffer-Converter?unique=6dc9bd2",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4046"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4046",
+    "features": [
+      "Micropower CMOS Phase-Locked Loop (PLL)",
+      "Includes Voltage Controlled Oscillator (VCO) and two phase comparators",
+      "VCO Frequency: Up to 1.4 MHz (typical at 10V)",
+      "Low power consumption (70 µW typical at 5V)",
+      "Wide voltage range: 3V to 18V"
+    ],
+    "applications": [
+      "Frequency synthesis and multiplication",
+      "FM demodulation and modulation",
+      "Data synchronization and conditioning",
+      "Tone decoding"
+    ],
+    "alternatives": [
+      { "name": "NE567 (Tone Decoder)", "price": "25.00" }
+    ]
   },
   {
     "id": "80",
@@ -957,7 +2273,23 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6231/image_512/%5B74HC165%5D%20IC%2074165%20-%208%20bit%20Parallel%20In%20-%20Serial%20Out%20Shift%20Register%20-%20Original?unique=1daa403",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74165"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74165",
+    "features": [
+      "8-bit parallel-load shift register",
+      "Serial output for cascading",
+      "Asynchronous parallel load",
+      "Clock inhibit for precise shifting control",
+      "Standard TTL logic compatibility"
+    ],
+    "applications": [
+      "Expanding microcontroller inputs (e.g., reading 8 buttons with 3 pins)",
+      "Parallel-to-serial data conversion",
+      "Keypad scanning",
+      "Data acquisition systems"
+    ],
+    "alternatives": [
+      { "name": "CD4021 (CMOS Shift Register)", "price": "20.00" }
+    ]
   },
   {
     "id": "81",
@@ -969,7 +2301,23 @@
     "price": 15.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6230/image_512/%5B74HC164%5D%20IC%2074164%20-%208%20Bit%20Serial%20In%20-%20Parallel%20Out%20Shift%20Register%20-%20Original?unique=31b2ca0",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74164"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74164",
+    "features": [
+      "8-bit serial-in, parallel-out shift register",
+      "Asynchronous master reset (clear)",
+      "Fully synchronous serial shifting",
+      "Typical maximum clock frequency: 36 MHz (at 5V)",
+      "Standard TTL operation"
+    ],
+    "applications": [
+      "Expanding microcontroller outputs",
+      "Driving 7-segment displays",
+      "Serial-to-parallel data conversion",
+      "LED matrix control"
+    ],
+    "alternatives": [
+      { "name": "74HC595 (With Storage Register)", "price": "15.00" }
+    ]
   },
   {
     "id": "82",
@@ -981,7 +2329,23 @@
     "price": 20.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6229/image_512/%5B4022%5D%20IC%204022%20-%20Decade%20Counter?unique=4c1ad38",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4022"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4022",
+    "features": [
+      "Octal counter/divider (Divide-by-8)",
+      "8 decoded outputs (1 of 8 is high)",
+      "Fully static operation",
+      "Medium speed operation (10 MHz at 10V)",
+      "Standardized symmetrical output characteristics"
+    ],
+    "applications": [
+      "LED chaser and sequencing circuits",
+      "Divide-by-N counting",
+      "Frequency division",
+      "Digital timer sequences"
+    ],
+    "alternatives": [
+      { "name": "IC 4017 (Decade counter)", "price": "15.00" }
+    ]
   },
   {
     "id": "83",
@@ -993,7 +2357,23 @@
     "price": 15.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6228/image_512/%5B4017%5D%20IC%204017%20-%20Decade%20Counter-Divider?unique=bf7614b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4017"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=4017",
+    "features": [
+      "5-stage Johnson decade counter",
+      "10 decoded outputs (0 to 9)",
+      "Carry out for cascading",
+      "Fully static operation",
+      "Wide supply voltage range: 3V to 15V"
+    ],
+    "applications": [
+      "Running LED lights (Knight Rider effect)",
+      "Decade counting and frequency division",
+      "Electronic roulette games",
+      "Step sequencing in audio synthesizers"
+    ],
+    "alternatives": [
+      { "name": "IC 4022 (Divide-by-8)", "price": "20.00" }
+    ]
   },
   {
     "id": "84",
@@ -1005,7 +2385,23 @@
     "price": 75.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6225/image_512/%5B24C512%5D%20EEPROM%2024C512?unique=bf7614b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=24C512"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=24C512",
+    "features": [
+      "512 Kbit capacity (64K x 8 bits)",
+      "2-Wire (I2C) serial interface",
+      "1 million write cycles reliability",
+      "Data retention > 40 years",
+      "Hardware data write protect pin"
+    ],
+    "applications": [
+      "Non-volatile configuration storage",
+      "Data logging (sensor data storage)",
+      "Microcontroller memory expansion",
+      "Digital audio/image storage"
+    ],
+    "alternatives": [
+      { "name": "AT24C256 (256Kbit EEPROM)", "price": "35.00" }
+    ]
   },
   {
     "id": "85",
@@ -1017,7 +2413,24 @@
     "price": 28.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6225/image_512/%5B24C512%5D%20EEPROM%2024C512?unique=bf7614b",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SN75176"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=SN75176",
+    "features": [
+      "Bidirectional RS-485 and RS-422 transceiver",
+      "Supports data rates up to 10 Mbps",
+      "High input impedance supports up to 32 nodes on a bus",
+      "Thermal shutdown protection",
+      "Designed for multipoint transmission on long bus lines"
+    ],
+    "applications": [
+      "Industrial control networks (Modbus)",
+      "DMX512 lighting control",
+      "Long-distance serial communications",
+      "Building automation"
+    ],
+    "alternatives": [
+      { "name": "MAX485 Kit", "price": "100.00" },
+      { "name": "MAX3485 (3.3V version)", "price": "115.00" }
+    ]
   },
   {
     "id": "86",
@@ -1029,7 +2442,23 @@
     "price": 20.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6207/image_512/%5B74HC4051%5D%20IC%20744051%20-%208%20Channel%20Analog%20Multiplexer-Demultiplexer%20-%20Original?unique=3dedf17",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74HC4051"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74HC4051",
+    "features": [
+      "8-channel analog or digital multiplexing/demultiplexing",
+      "Low ON-resistance (typically 80 Ohms at 4.5V)",
+      "Wide operating voltage: 2V to 10V",
+      "Bidirectional signal flow",
+      "Logic-level translation capability"
+    ],
+    "applications": [
+      "Microcontroller analog pin expansion",
+      "Audio signal routing",
+      "Sensor array switching",
+      "Programmable gain amplifiers"
+    ],
+    "alternatives": [
+      { "name": "74HC4067 Breakout Board (16-channel)", "price": "80.00" }
+    ]
   },
   {
     "id": "87",
@@ -1041,7 +2470,23 @@
     "price": 20.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6207/image_512/%5B74HC4051%5D%20IC%20744051%20-%208%20Channel%20Analog%20Multiplexer-Demultiplexer%20-%20Original?unique=3dedf17",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74151"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74151",
+    "features": [
+      "8-line to 1-line digital data selector/multiplexer",
+      "Complementary (true and inverted) outputs",
+      "Strobe (enable) input for easy cascading",
+      "High speed operation (typical 15ns delay)",
+      "Standard TTL logic compatibility"
+    ],
+    "applications": [
+      "Digital data routing",
+      "Parallel-to-serial conversion",
+      "Boolean logic function generation",
+      "Hardware encoding/decoding"
+    ],
+    "alternatives": [
+      { "name": "IC 74153 - Original (Dual 4-to-1)", "price": "28.00" }
+    ]
   },
   {
     "id": "88",
@@ -1053,7 +2498,23 @@
     "price": 30.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6205/image_512/%5B74HC147%5D%20IC%2074147%20-%20High%20Speed%20CMOS%20Logic%2010%20to%204%20Line%20Priority%20Encoder%20-%20Original?unique=c45c398",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74147"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74147",
+    "features": [
+      "10-line to 4-line BCD priority encoder",
+      "Encodes the highest-order data line",
+      "Active-low inputs and outputs",
+      "Typical propagation delay: 15ns",
+      "Drives up to 10 LSTTL loads"
+    ],
+    "applications": [
+      "Decimal to BCD conversion",
+      "N-key rollover keyboard encoding",
+      "Interrupt prioritization in CPUs",
+      "ADC front-end logic"
+    ],
+    "alternatives": [
+      { "name": "CD4026 (Decade counter/decoder)", "price": "18.00" }
+    ]
   },
   {
     "id": "89",
@@ -1065,7 +2526,24 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6204/image_512/%5B74HC00.ORIGINAL%5D%20IC%207400%20-%20Quad%202%20input%20NAND%20Gates%20-%20Original?unique=8eb87d6",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7400"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=7400",
+    "features": [
+      "Four independent 2-input NAND gates",
+      "Wide operating voltage: 2V to 6V",
+      "High noise immunity",
+      "Low input current",
+      "Original Texas Instruments manufacturing"
+    ],
+    "applications": [
+      "Basic logic gating",
+      "Building SR Latches",
+      "Oscillator circuits",
+      "Universal logic implementations"
+    ],
+    "alternatives": [
+      { "name": "IC 7400 (Copy)", "price": "10.00" },
+      { "name": "IC 7408 - Original", "price": "15.00" }
+    ]
   },
   {
     "id": "90",
@@ -1077,6 +2555,23 @@
     "price": 18.00,
     "stock": 50,
     "image": "https://www.ram-e-shop.com/web/image/product.template/6202/image_512/%5B74HC373%5D%20IC%2074373%20-%20Octal%20D-Type%20Transparent%20Latch%20with%203%20State%20O-P%20-%20Original?unique=ca915c9",
-    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74373"
+    "datasheet": "https://www.alldatasheet.com/view.jsp?Searchword=74373",
+    "features": [
+      "Octal transparent D-type latches",
+      "3-state non-inverting outputs for bus-oriented applications",
+      "Common Latch Enable (LE) and Output Enable (OE)",
+      "High-current 3-state outputs drive up to 15 LSTTL loads",
+      "High speed operation"
+    ],
+    "applications": [
+      "Address demultiplexing for microprocessors",
+      "Bus buffering and driving",
+      "Data latching in memory systems",
+      "I/O port expansion"
+    ],
+    "alternatives": [
+      { "name": "IC 74573 (Octal Latch)", "price": "20.00" },
+      { "name": "IC 74245 (Bus Transceiver)", "price": "18.00" }
+    ]
   }
 ]

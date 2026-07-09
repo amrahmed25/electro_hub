@@ -46,7 +46,8 @@ function ShoppingCart() {
                     style={{ animationDelay: "40ms" }}
                   >
                     <div>Product Image</div>
-                    <div className="text-left">Component</div>
+                    {/* 🌟 التعديل هنا: ضفنا pl-8 عشان نبعد الكلمة عن الصورة 🌟 */}
+                    <div className="text-left pl-8">Component</div>
                     <div>Package</div>
                     <div>Quantity</div>
                     <div>Price</div>
@@ -72,7 +73,8 @@ function ShoppingCart() {
                         )}
                       </div>
 
-                      <div className="text-left">
+                      {/* 🌟 التعديل هنا: ضفنا pl-8 عشان نبعد تفاصيل المنتج عن الصورة وتبقى محاذية لكلمة Component فوق 🌟 */}
+                      <div className="text-left pl-8">
                         <div className="text-sm font-bold text-white line-clamp-1">{item.name}</div>
                         {item.manufacturer && (
                           <div className="text-[10px] text-blue-400 bg-blue-900/30 border border-blue-800/50 px-2 py-0.5 rounded-md inline-block mt-1 font-bold tracking-wider uppercase">
