@@ -10,8 +10,8 @@ export default function Login() {
     e.preventDefault();
     
     if (isLogin) {
-      // لو بيعمل تسجيل دخول، انقله فوراً لصفحة المتجر
-      navigate('/store');
+      // 🌟 التعديل هنا: خليناه ينقله لصفحة الهوم بدل المتجر 🌟
+      navigate('/home'); 
     } else {
       // لو بيعمل حساب جديد
       alert("تم إنشاء الحساب بنجاح! يلا سجل دخول.");
