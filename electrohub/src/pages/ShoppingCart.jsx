@@ -50,7 +50,7 @@ function ShoppingCart() {
                   )}
                 </div>
 
-                <div className="text-left">
+                <div className="text-center">
                   <div className="font-semibold">{item.name}</div>
                   {item.manufacturer && (
                     <div className="text-xs text-gray-400">
