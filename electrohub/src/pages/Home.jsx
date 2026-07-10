@@ -1,23 +1,70 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Wand2, Cpu, CircuitBoard, ArrowRight, ShoppingCart, ShieldCheck } from 'lucide-react';
+import { Search, Wand2, Cpu, CircuitBoard, ArrowRight, ShoppingCart, ShieldCheck, Loader2 } from 'lucide-react';
 import Header from './Header';
 import componentsData from '../data/components.json';
 import { useCart } from '../CartContext'; 
+import { API_BASE_URL } from '../config'; // 🌟 استدعاء اللينك المركزي
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchCategory, setSearchCategory] = useState('All Categories');
   
+  // 🌟 إعدادات الـ State لجلب البيانات
+  const [components, setComponents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
   const { addItem } = useCart(); 
-  
-  const featuredComponents = componentsData.slice(0, 4);
 
-  const dynamicCategories = useMemo(() => {
-    const uniqueCategories = new Set(componentsData.map(item => item.category));
-    return ['All Categories', ...Array.from(uniqueCategories)];
+  // ================= جلب البيانات الذكي (ملف محلي أو باك إند) =================
+  useEffect(() => {
+    if (!API_BASE_URL) {
+      setComponents(componentsData);
+      setIsLoading(false);
+    } else {
+      fetch(`${API_BASE_URL}/components`)
+        .then(res => {
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        })
+        .then(response => {
+          let fetchedData = response.data || response;
+          if (fetchedData && typeof fetchedData === 'object' && !Array.isArray(fetchedData)) {
+            fetchedData = fetchedData.items || fetchedData.components || fetchedData.data || Object.values(fetchedData).find(Array.isArray) || [];
+          }
+          if (!Array.isArray(fetchedData)) fetchedData = [];
+
+          // توحيد أسماء البيانات
+          const normalizedData = fetchedData.map(item => ({
+            ...item,
+            image: item.imageUrl || item.image,
+            stock: item.stockQuantity !== undefined ? item.stockQuantity : item.stock,
+            package: item.packageType || item.package,
+            datasheet: item.datasheetUrl || item.datasheet
+          }));
+
+          setComponents(normalizedData);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          console.error("Error fetching data:", err);
+          setError("Failed to load components");
+          setIsLoading(false);
+        });
+    }
   }, []);
+  // ==============================================================
+
+  // 🌟 أخذ أول 4 منتجات فقط للعرض في الصفحة الرئيسية
+  const featuredComponents = components.slice(0, 4);
+
+  // 🌟 جلب الأقسام بشكل ديناميكي من البيانات اللي رجعت
+  const dynamicCategories = useMemo(() => {
+    const uniqueCategories = new Set(components.map(item => item.category).filter(Boolean));
+    return ['All Categories', ...Array.from(uniqueCategories)];
+  }, [components]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -29,13 +76,9 @@ export default function Home() {
     }); 
   };
 
-  // 🌟 الكروت بقت 3 بس وتم التعديل عليهم مع إضافة حالة البدائل الذكية
   const features = [
     { title: "Project Generator", desc: "Generate full component lists and step-by-step guides using AI.", icon: Wand2, link: "/project-generator", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/30 hover:border-cyan-500/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]", action: "Try Generator" },
-    
-    // 🌟 الإضافة هنا: تمرير الـ state الخاصة بالـ Smart Alternatives
     { title: "Smart Alternatives", desc: "Out of stock? Find the perfect alternative component based on specs.", icon: Cpu, link: "/store", state: { highlightMoreDetails: true }, color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30 hover:border-emerald-500/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]", action: "Find Alternatives" },
-    
     { title: "Logic Simulator", desc: "Build and test digital logic circuits in real-time.", icon: CircuitBoard, link: "/logic", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/30 hover:border-amber-500/80 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]", action: "Launch Simulator" }
   ];
 
@@ -83,7 +126,7 @@ export default function Home() {
                   <select 
                     value={searchCategory}
                     onChange={(e) => setSearchCategory(e.target.value)}
-                    className="bg-transparent text-gray-400 text-sm focus:outline-none cursor-pointer py-1"
+                    className="bg-transparent text-gray-400 text-sm focus:outline-none cursor-pointer py-1 max-w-[150px]"
                   >
                     {dynamicCategories.map((cat) => (
                       <option key={cat} value={cat} className="bg-[#0d1323]">
@@ -99,12 +142,11 @@ export default function Home() {
               </form>
             </div>
 
-            {/* FEATURES CARDS (التعديل تم هنا ليكونوا 3 كروت في المنتصف) */}
+            {/* FEATURES CARDS */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-32 max-w-5xl mx-auto">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  // 🌟 الإضافة هنا: لو الكارت ليه state هيبعتها مع الـ navigate
                   onClick={() => navigate(feature.link, feature.state ? { state: feature.state } : {})}
                   className={`fade-up cursor-pointer group bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-3xl border transition-all duration-300 flex flex-col h-full ${feature.border}`}
                   style={{ animationDelay: `${400 + index * 100}ms` }}
@@ -128,38 +170,56 @@ export default function Home() {
                   <h2 className="text-3xl font-extrabold text-white tracking-wide mb-2">Featured Components</h2>
                   <p className="text-gray-400 text-sm">Top picks from our massive components library.</p>
                 </div>
-                <button onClick={() => navigate('/store', { state: { highlightMoreDetails: true } })} className="hidden sm:flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors">
+                <button onClick={() => navigate('/store')} className="hidden sm:flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors">
                   Explore Store <ArrowRight size={18} />
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {featuredComponents.map((item) => (
-                  <div 
-                    key={item.id} 
-                    onClick={() => navigate(`/product/${item.id}`)} 
-                    className="cursor-pointer bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border border-gray-800/60 hover:border-gray-500 transition-all flex flex-col group hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-                  >
-                    <div className="bg-white rounded-xl h-32 mb-4 p-2 flex items-center justify-center relative overflow-hidden shadow-inner">
-                       <img src={item.image} alt={item.name} className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500" />
+              {/* 🌟 معالجة حالة التحميل أو الأخطاء في هذا الجزء فقط */}
+              {isLoading ? (
+                <div className="flex flex-col items-center justify-center py-16 text-blue-500">
+                  <Loader2 size={36} className="animate-spin mb-4" />
+                  <p className="text-gray-400 text-sm">Loading featured items...</p>
+                </div>
+              ) : error ? (
+                <div className="flex flex-col items-center justify-center py-16 text-red-500 border border-red-900/30 bg-red-900/10 rounded-2xl">
+                  <p className="text-sm mb-2">{error}</p>
+                  <button onClick={() => window.location.reload()} className="text-xs text-white bg-red-600 px-4 py-2 rounded-lg hover:bg-red-500">Retry</button>
+                </div>
+              ) : featuredComponents.length === 0 ? (
+                <div className="text-center py-16 text-gray-500 border border-gray-800/60 rounded-2xl">
+                  No featured components found.
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {featuredComponents.map((item) => (
+                    <div 
+                      key={item.id} 
+                      onClick={() => navigate(`/product/${item.id}`)} 
+                      className="cursor-pointer bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border border-gray-800/60 hover:border-gray-500 transition-all flex flex-col group hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                    >
+                      <div className="bg-white rounded-xl h-32 mb-4 p-2 flex items-center justify-center relative overflow-hidden shadow-inner">
+                         <img src={item.image} alt={item.name} className={`max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500 ${item.stock === 0 && 'grayscale opacity-50'}`} />
+                      </div>
+                      <h4 className="font-bold text-white text-sm line-clamp-1 mb-1 group-hover:text-blue-400 transition-colors">{item.name}</h4>
+                      <p className="text-xs text-gray-500 mb-4 line-clamp-2 h-8">{item.description}</p>
+                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-800/60">
+                        <span className="font-extrabold text-white">EGP {parseFloat(item.price || 0).toFixed(2)}</span>
+                        <button 
+                          onClick={(e) => { 
+                            e.stopPropagation(); 
+                            if (item.stock > 0) addItem(item); 
+                          }} 
+                          disabled={item.stock === 0}
+                          className={`${item.stock > 0 ? 'text-blue-500 hover:text-white hover:bg-blue-600 bg-blue-900/20 cursor-pointer' : 'text-gray-500 bg-gray-800 cursor-not-allowed'} p-2 rounded-lg transition-colors`}
+                        >
+                          <ShoppingCart size={16} />
+                        </button>
+                      </div>
                     </div>
-                    <h4 className="font-bold text-white text-sm line-clamp-1 mb-1 group-hover:text-blue-400 transition-colors">{item.name}</h4>
-                    <p className="text-xs text-gray-500 mb-4 line-clamp-2 h-8">{item.description}</p>
-                    <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-800/60">
-                      <span className="font-extrabold text-white">EGP {parseFloat(item.price).toFixed(2)}</span>
-                      <button 
-                        onClick={(e) => { 
-                          e.stopPropagation(); 
-                          addItem(item); 
-                        }} 
-                        className="text-blue-500 hover:text-white hover:bg-blue-600 bg-blue-900/20 p-2 rounded-lg transition-colors"
-                      >
-                        <ShoppingCart size={16} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* HOW IT WORKS */}

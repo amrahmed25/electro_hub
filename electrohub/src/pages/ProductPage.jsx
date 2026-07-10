@@ -59,13 +59,18 @@ const ProductPage = () => {
             console.warn("Alternatives couldn't be loaded", e);
           }
 
-          // توحيد أسماء البيانات عشان الديزاين
+          // توحيد أسماء البيانات عشان الديزاين (التعديل السحري هنا 👇)
           const normalizedProduct = {
             ...productData,
             image: productData.imageUrl || productData.image,
             stock: productData.stockQuantity !== undefined ? productData.stockQuantity : productData.stock,
             package: productData.packageType || productData.package,
             datasheet: productData.datasheetUrl || productData.datasheet,
+            
+            // 🌟 سحب التفاصيل من جوه الـ specs لو موجودة، أو من بره لو بنقرأ من اللوكال 🌟
+            features: productData.specs?.features || productData.features || [],
+            applications: productData.specs?.applications || productData.applications || [],
+            
             alternatives: alternativesData
           };
 
@@ -207,6 +212,7 @@ const ProductPage = () => {
                   </button>
                 </div>
 
+                {/* 🌟 المميزات والتطبيقات بعد التعديل 🌟 */}
                 {product.features && product.features.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 flex items-center gap-2">
