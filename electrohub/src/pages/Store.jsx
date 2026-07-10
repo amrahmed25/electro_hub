@@ -1,32 +1,61 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Search, ChevronRight, FileText, ExternalLink, Minus, Plus } from 'lucide-react';
-import componentsData from '../data/components.json';
+import { Search, ChevronRight, FileText, ExternalLink, Minus, Plus, Loader2 } from 'lucide-react';
 import Header from './Header'; 
 import { useCart } from '../CartContext'; 
 
 export default function Store() {
-  const [components, setComponents] = useState(componentsData);
+  const [components, setComponents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   const location = useLocation(); 
-
   const [searchQuery, setSearchQuery] = useState(location.state?.initialSearch || '');
   const [selectedCategory, setSelectedCategory] = useState(location.state?.initialCategory || 'All');
-  
-  // 🌟 هنا بيستقبل الإشارة اللي اتبعتت من صفحة الهوم 🌟
   const highlightMoreDetails = location.state?.highlightMoreDetails || false;
 
   const navigate = useNavigate();
   const [quantities, setQuantities] = useState({});
   const { addItem } = useCart(); 
 
+  // ================= جلب البيانات الذكي =================
+  useEffect(() => {
+    fetch('https://electrohub-pi4ayssj.b4a.run/components')
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(response => {
+        // استخراج الداتا مهما كان شكل التغليف بتاع الباك إند
+        let fetchedData = response.data || response;
+        
+        // لو الباك إند باعتها جوه object عشان الـ Pagination
+        if (fetchedData && typeof fetchedData === 'object' && !Array.isArray(fetchedData)) {
+          fetchedData = fetchedData.items || fetchedData.components || fetchedData.data || Object.values(fetchedData).find(Array.isArray) || [];
+        }
+        
+        // التأكد النهائي إنها Array
+        if (!Array.isArray(fetchedData)) fetchedData = [];
+
+        setComponents(fetchedData);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching data:", err);
+        setError("Failed to load components. Please check the server.");
+        setIsLoading(false);
+      });
+  }, []);
+  // ======================================================
+
   const categories = useMemo(() => {
-    const uniqueCategories = new Set(components.map(item => item.category));
+    const uniqueCategories = new Set(components.map(item => item.category).filter(Boolean));
     return ['All', ...Array.from(uniqueCategories)];
   }, [components]);
 
   const filteredComponents = components.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          item.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = item.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          item.description?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -42,13 +71,39 @@ export default function Store() {
   };
 
   const handleAddToCart = (item) => {
-    if (item.stock === 0) return; 
+    if (item.stockQuantity === 0) return; 
     const qtyToAdd = quantities[item.id] || 1;
+    
+    const normalizedItem = {
+      ...item,
+      image: item.imageUrl,
+      stock: item.stockQuantity,
+      package: item.packageType
+    };
+
     for (let i = 0; i < qtyToAdd; i++) {
-      addItem(item);
+      addItem(normalizedItem);
     }
     setQuantities(prev => ({ ...prev, [item.id]: 1 })); 
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#070b14] flex flex-col items-center justify-center text-blue-500">
+        <Loader2 size={48} className="animate-spin mb-4" />
+        <h2 className="text-xl font-bold text-white tracking-widest animate-pulse">Fetching Components from API...</h2>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#070b14] flex flex-col items-center justify-center text-red-500">
+        <h2 className="text-xl font-bold text-white mb-2">Connection Error</h2>
+        <p className="text-gray-400">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[url('/images/bg-circuit.jpg')] bg-cover bg-fixed bg-center relative font-sans text-gray-200">
@@ -74,17 +129,11 @@ export default function Store() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-colors shadow-[0_0_15px_rgba(37,99,235,0.3)]">
-              Search
-            </button>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
             
-            <aside 
-              className="fade-up w-full lg:w-1/4 bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-2xl border border-gray-800/60 shadow-2xl flex flex-col gap-6 lg:sticky lg:top-6 h-fit"
-              style={{ animationDelay: "50ms" }}
-            >
+            <aside className="fade-up w-full lg:w-1/4 bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-2xl border border-gray-800/60 shadow-2xl flex flex-col gap-6 lg:sticky lg:top-6 h-fit" style={{ animationDelay: "50ms" }}>
               <div>
                 <h2 className="text-[11px] font-extrabold tracking-widest text-gray-400 mb-4 uppercase">Filters & Categories</h2>
                 <ul className="space-y-3 text-xs font-medium text-gray-300">
@@ -109,45 +158,32 @@ export default function Store() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                 {filteredComponents.map((item, index) => (
-                  <div 
-                    key={item.id} 
-                    className={`fade-up bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border ${item.stock === 0 ? 'border-red-900/40 opacity-80' : 'border-gray-800/60 hover:border-blue-600/40 hover:shadow-[0_0_20px_rgba(37,99,235,0.05)]'} transition-all duration-300 flex flex-col group`}
-                    style={{ animationDelay: `${150 + index * 40}ms` }}
-                  >
-                    
+                  <div key={item.id || index} className={`fade-up bg-[#0d1323]/60 backdrop-blur-md p-5 rounded-2xl border ${item.stockQuantity === 0 ? 'border-red-900/40 opacity-80' : 'border-gray-800/60 hover:border-blue-600/40 hover:shadow-[0_0_20px_rgba(37,99,235,0.05)]'} transition-all duration-300 flex flex-col group`} style={{ animationDelay: `${150 + (index % 10) * 40}ms` }}>
                     <div className="bg-white rounded-xl h-32 mb-5 p-2 flex items-center justify-center overflow-hidden relative shadow-inner">
-                       <img src={item.image} alt={item.name} className={`max-h-full max-w-full object-contain mix-blend-multiply ${item.stock > 0 && 'group-hover:scale-105'} transition-transform duration-500 ${item.stock === 0 && 'grayscale opacity-50'}`} />
-                       <span className="absolute bottom-1 right-1 bg-black/70 backdrop-blur-sm text-[9px] font-mono text-gray-300 px-1.5 py-0.5 rounded border border-gray-700">{item.package}</span>
+                       <img src={item.imageUrl} alt={item.name} className={`max-h-full max-w-full object-contain mix-blend-multiply ${item.stockQuantity > 0 ? 'group-hover:scale-105' : 'grayscale opacity-50'} transition-transform duration-500`} />
+                       <span className="absolute bottom-1 right-1 bg-black/70 backdrop-blur-sm text-[9px] font-mono text-gray-300 px-1.5 py-0.5 rounded border border-gray-700">{item.packageType || 'N/A'}</span>
                     </div>
                     
                     <div className="flex justify-between items-start mb-1.5 gap-2">
-                      <h3 className="text-base font-bold text-white leading-tight truncate" title={item.name}>{item.name}</h3>
+                      <h3 className="text-base font-bold text-white leading-tight truncate" title={item.name}>{item.name || 'Unnamed Component'}</h3>
                       <span className="text-[9px] bg-blue-900/30 text-blue-400 border border-blue-800/50 px-2 py-0.5 rounded-md font-bold shrink-0 tracking-wider uppercase">
-                        {item.manufacturer.substring(0,6)}
+                        {item.manufacturer?.substring(0,6) || "N/A"}
                       </span>
                     </div>
-                    
                     <p className="text-xs text-gray-500 mb-6 h-8 line-clamp-2 leading-relaxed" title={item.description}>{item.description}</p>
                     
                     <div className="grid grid-cols-2 gap-1 border-b border-gray-800/60 pb-4 mb-4 text-center">
-                      <a 
-                        href={item.datasheet} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn cursor-pointer p-1.5"
-                      >
-                        <FileText size={14} /> <span className="whitespace-nowrap">Datasheet</span>
-                      </a>
+                      {item.datasheetUrl ? (
+                        <a href={item.datasheetUrl} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-500 hover:text-blue-400 transition-colors group/btn cursor-pointer p-1.5">
+                          <FileText size={14} /> <span className="whitespace-nowrap">Datasheet</span>
+                        </a>
+                      ) : (
+                        <div className="flex flex-col items-center gap-1.5 text-[10px] font-medium text-gray-700 p-1.5 opacity-50 cursor-not-allowed">
+                          <FileText size={14} /> <span className="whitespace-nowrap">No Datasheet</span>
+                        </div>
+                      )}
                       
-                      {/* 🌟 الزرار اللي هينور لو اليوزر جي من كارت البدائل 🌟 */}
-                      <button 
-                        onClick={() => navigate(`/product/${item.id}`)} 
-                        className={`flex flex-col items-center justify-center gap-1.5 text-[10px] font-medium transition-all group/btn p-1.5 rounded-lg ${
-                          highlightMoreDetails 
-                            ? 'text-blue-400 animate-pulse bg-blue-900/30 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.4)]' 
-                            : 'text-gray-500 hover:text-blue-400 border border-transparent'
-                        }`}
-                      >
+                      <button onClick={() => navigate(`/product/${item.id}`)} className={`flex flex-col items-center justify-center gap-1.5 text-[10px] font-medium transition-all group/btn p-1.5 rounded-lg ${highlightMoreDetails ? 'text-blue-400 animate-pulse bg-blue-900/30 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.4)]' : 'text-gray-500 hover:text-blue-400 border border-transparent'}`}>
                         <ExternalLink size={14} /> <span className="whitespace-nowrap">More Details</span>
                       </button>
                     </div>
@@ -155,38 +191,28 @@ export default function Store() {
                     <div className="flex justify-between items-end mb-5">
                       <div>
                         <p className="text-[9px] text-gray-500 uppercase tracking-wider mb-1">Unit Price</p>
-                        <p className="text-xl font-extrabold text-white">EGP {item.price}</p>
+                        <p className="text-xl font-extrabold text-white">EGP {item.price || 0}</p>
                       </div>
                       <div className="text-right">
                         <p className="text-[9px] text-gray-500 uppercase tracking-wider mb-1">Availability</p>
-                        {item.stock > 0 ? (
-                          <p className="text-xs font-bold text-emerald-400">In Stock: {item.stock}</p>
-                        ) : (
-                          <p className="text-xs font-bold text-red-500">Out of Stock</p>
-                        )}
+                        {item.stockQuantity > 0 ? <p className="text-xs font-bold text-emerald-400">In Stock: {item.stockQuantity}</p> : <p className="text-xs font-bold text-red-500">Out of Stock</p>}
                       </div>
                     </div>
 
                     <div className="flex gap-2.5 mt-auto">
-                      <div className={`flex items-center bg-[#070b14] border border-gray-800 rounded-xl overflow-hidden h-10 w-24 shrink-0 ${item.stock === 0 && 'opacity-50 pointer-events-none'}`}>
-                        <button onClick={() => handleQuantityChange(item.id, -1, item.stock)} className="px-2.5 text-gray-500 hover:text-white hover:bg-gray-800 transition-colors h-full flex items-center"><Minus size={12} /></button>
+                      <div className={`flex items-center bg-[#070b14] border border-gray-800 rounded-xl overflow-hidden h-10 w-24 shrink-0 ${!item.stockQuantity && 'opacity-50 pointer-events-none'}`}>
+                        <button onClick={() => handleQuantityChange(item.id, -1, item.stockQuantity)} className="px-2.5 text-gray-500 hover:text-white hover:bg-gray-800 transition-colors h-full flex items-center"><Minus size={12} /></button>
                         <input type="text" value={quantities[item.id] || 1} readOnly className="w-full text-center bg-transparent text-white text-xs font-bold focus:outline-none h-full" />
-                        <button onClick={() => handleQuantityChange(item.id, 1, item.stock)} className="px-2.5 text-gray-500 hover:text-white hover:bg-gray-800 transition-colors h-full flex items-center"><Plus size={12} /></button>
+                        <button onClick={() => handleQuantityChange(item.id, 1, item.stockQuantity)} className="px-2.5 text-gray-500 hover:text-white hover:bg-gray-800 transition-colors h-full flex items-center"><Plus size={12} /></button>
                       </div>
-                      <button 
-                        onClick={() => handleAddToCart(item)} 
-                        disabled={item.stock === 0}
-                        className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all h-10 flex items-center justify-center ${item.stock > 0 ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.2)] active:scale-95' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
-                      >
-                        {item.stock > 0 ? 'Add to Cart' : 'Sold Out'}
+                      <button onClick={() => handleAddToCart(item)} disabled={!item.stockQuantity} className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all h-10 flex items-center justify-center ${item.stockQuantity > 0 ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.2)] active:scale-95' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}>
+                        {item.stockQuantity > 0 ? 'Add to Cart' : 'Sold Out'}
                       </button>
                     </div>
-
                   </div>
                 ))}
               </div>
             </main>
-
           </div>
         </div>
       </div>
