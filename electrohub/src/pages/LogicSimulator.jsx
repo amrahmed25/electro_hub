@@ -25,7 +25,6 @@ function LogicSimulator() {
       title: "Microcontroller Ready",
       desc: "Arduino Uno linked, wired, and ready for C++ code injection and sensor integration.",
       img: "/images/Microcontroller Ready.png",
-      // 🌟 تم تحديث اللينك هنا للمشروع الجديد 🌟
       link: "https://www.tinkercad.com/projects/Tinkercad-Blinking-LED-Lights",
       icon: Cpu,
       color: "text-amber-400"
@@ -35,13 +34,11 @@ function LogicSimulator() {
   return (
     <div className="min-h-screen bg-[url('/images/bg-circuit.jpg')] bg-cover bg-fixed bg-center relative font-sans text-gray-200 select-none">
       
-      {/* Overlay غامق لتوحيد التصميم */}
       <div className="absolute inset-0 bg-[#070b14]/80 z-0"></div>
 
       <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         <Header />
 
-        {/* ستايل الـ Animations الخاص بالظهور البطيء */}
         <style>{`
           @keyframes floatUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
           .fade-up { animation: floatUp .6s cubic-bezier(.16,1,.3,1) both; }
@@ -50,7 +47,6 @@ function LogicSimulator() {
         <div className="flex-1 overflow-y-auto px-6 pb-20 pt-24 sm:px-10 scroll-smooth">
           <div className="max-w-[1200px] mx-auto">
             
-            {/* HERO SECTION */}
             <div className="flex flex-col items-center text-center mt-10 mb-16">
               <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-900/20 px-5 py-2 text-xs font-bold tracking-widest text-blue-400 uppercase">
                 <Zap size={14} className="text-amber-400" /> Virtual Electronics Workspace
@@ -65,7 +61,6 @@ function LogicSimulator() {
                 A high-fidelity simulation environment powered by Tinkercad Engine. Build, wire, and test your circuits safely before touching physical hardware.
               </p>
 
-              {/* Main Launch Button */}
               <div className="fade-up" style={{ animationDelay: "300ms" }}>
                 <button
                   onClick={() => window.open("https://www.tinkercad.com/circuits", "_blank")}
@@ -77,10 +72,8 @@ function LogicSimulator() {
               </div>
             </div>
 
-            {/* DIVIDER */}
             <div className="fade-up w-full h-[1px] bg-gradient-to-r from-transparent via-gray-700 to-transparent my-16" style={{ animationDelay: "400ms" }}></div>
 
-            {/* TEMPLATES SECTION */}
             <div className="fade-up mb-12" style={{ animationDelay: "450ms" }}>
               <h2 className="text-2xl font-extrabold text-white tracking-wide mb-2 text-center">Quick Start Templates</h2>
               <p className="text-gray-400 text-sm text-center mb-10">Choose a pre-configured environment to jumpstart your design.</p>
@@ -93,7 +86,6 @@ function LogicSimulator() {
                     className={`fade-up cursor-pointer group bg-[#0d1323]/60 backdrop-blur-md p-6 rounded-3xl border border-gray-800/60 hover:border-blue-500/40 transition-all duration-300 flex flex-col h-full hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)]`}
                     style={{ animationDelay: `${500 + index * 100}ms` }}
                   >
-                    {/* Image Placeholder / Icon */}
                     <div className="w-full aspect-video bg-[#070b14] rounded-2xl mb-6 flex items-center justify-center border border-gray-800 overflow-hidden relative group-hover:border-blue-500/30 transition-colors">
                       <template.icon size={48} className={`${template.color} opacity-20 absolute`} />
                       <img 
@@ -117,7 +109,6 @@ function LogicSimulator() {
               </div>
             </div>
 
-            {/* FOOTER NOTE */}
             <div className="fade-up text-center mt-20" style={{ animationDelay: "800ms" }}>
               <p className="text-xs text-gray-600 flex items-center justify-center gap-2 font-mono tracking-widest uppercase">
                 <ShieldCheck size={14} className="text-emerald-500/50" /> 
