@@ -4,7 +4,7 @@ import componentsData from '../data/components.json';
 import { useCart } from '../CartContext';
 import Header from './Header'; 
 import { ArrowLeft, ZoomIn, ChevronRight, Plus, Minus, Cpu, Activity, X, Loader2 } from 'lucide-react';
-import { API_BASE_URL } from '../config'; // 🌟 استدعاء اللينك المركزي
+import { API_BASE_URL } from '../config'; 
 
 const ProductPage = () => {
   const { id } = useParams(); 
@@ -16,16 +16,13 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [isZoomed, setIsZoomed] = useState(false); 
 
-  // ================= جلب بيانات المنتج والبدائل =================
   useEffect(() => {
     const fetchProductData = async () => {
       setIsLoading(true);
       try {
         if (!API_BASE_URL) {
-          // 1. القراءة من الملف المحلي (components.json)
           const localProduct = componentsData.find(item => item.id.toString() === id);
           if (localProduct) {
-            // جلب بدائل وهمية من نفس القسم
             const localAlts = componentsData
               .filter(item => item.category === localProduct.category && item.id.toString() !== id)
               .slice(0, 3);
@@ -36,13 +33,11 @@ const ProductPage = () => {
           }
           setIsLoading(false);
         } else {
-          // 2. القراءة من الباك إند (API)
           const prodRes = await fetch(`${API_BASE_URL}/components/${id}`);
           if (!prodRes.ok) throw new Error('Product not found');
           const prodJson = await prodRes.json();
           let productData = prodJson.data || prodJson;
 
-          // جلب البدائل من الباك إند
           let alternativesData = [];
           try {
             const altsRes = await fetch(`${API_BASE_URL}/components/${id}/alternatives`);
@@ -59,15 +54,13 @@ const ProductPage = () => {
             console.warn("Alternatives couldn't be loaded", e);
           }
 
-          // توحيد أسماء البيانات عشان الديزاين (التعديل السحري هنا 👇)
           const normalizedProduct = {
             ...productData,
             image: productData.imageUrl || productData.image,
             stock: productData.stockQuantity !== undefined ? productData.stockQuantity : productData.stock,
             package: productData.packageType || productData.package,
             datasheet: productData.datasheetUrl || productData.datasheet,
-            
-            // 🌟 سحب التفاصيل من جوه الـ specs لو موجودة، أو من بره لو بنقرأ من اللوكال 🌟
+
             features: productData.specs?.features || productData.features || [],
             applications: productData.specs?.applications || productData.applications || [],
             
@@ -212,7 +205,7 @@ const ProductPage = () => {
                   </button>
                 </div>
 
-                {/* 🌟 المميزات والتطبيقات بعد التعديل 🌟 */}
+                {/*  المميزات والتطبيقات بعد التعديل */}
                 {product.features && product.features.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 flex items-center gap-2">

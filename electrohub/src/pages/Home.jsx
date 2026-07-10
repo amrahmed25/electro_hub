@@ -4,13 +4,12 @@ import { Search, Wand2, Cpu, CircuitBoard, ArrowRight, ShoppingCart, ShieldCheck
 import Header from './Header';
 import componentsData from '../data/components.json';
 import { useCart } from '../CartContext'; 
-import { API_BASE_URL } from '../config'; // 🌟 استدعاء اللينك المركزي
+import { API_BASE_URL } from '../config'; 
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchCategory, setSearchCategory] = useState('All Categories');
-  
-  // 🌟 إعدادات الـ State لجلب البيانات
+
   const [components, setComponents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,7 +17,6 @@ export default function Home() {
   const navigate = useNavigate();
   const { addItem } = useCart(); 
 
-  // ================= جلب البيانات الذكي (ملف محلي أو باك إند) =================
   useEffect(() => {
     if (!API_BASE_URL) {
       setComponents(componentsData);
@@ -55,12 +53,9 @@ export default function Home() {
         });
     }
   }, []);
-  // ==============================================================
 
-  // 🌟 أخذ أول 4 منتجات فقط للعرض في الصفحة الرئيسية
   const featuredComponents = components.slice(0, 4);
 
-  // 🌟 جلب الأقسام بشكل ديناميكي من البيانات اللي رجعت
   const dynamicCategories = useMemo(() => {
     const uniqueCategories = new Set(components.map(item => item.category).filter(Boolean));
     return ['All Categories', ...Array.from(uniqueCategories)];
@@ -175,7 +170,7 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* 🌟 معالجة حالة التحميل أو الأخطاء في هذا الجزء فقط */}
+              {/*  معالجة حالة التحميل أو الأخطاء في هذا الجزء فقط */}
               {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-16 text-blue-500">
                   <Loader2 size={36} className="animate-spin mb-4" />

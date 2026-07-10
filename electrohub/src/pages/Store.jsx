@@ -4,7 +4,7 @@ import { Search, ChevronRight, FileText, ExternalLink, Minus, Plus, Loader2 } fr
 import componentsData from '../data/components.json';
 import Header from './Header'; 
 import { useCart } from '../CartContext'; 
-import { API_BASE_URL } from '../config'; // 🌟 استدعاء اللينك المركزي
+import { API_BASE_URL } from '../config'; 
 
 export default function Store() {
   const [components, setComponents] = useState([]);
@@ -21,10 +21,8 @@ export default function Store() {
   const [quantities, setQuantities] = useState({});
   const { addItem } = useCart(); 
 
-  // ================= جلب البيانات الذكي (ملف محلي أو باك إند) =================
   useEffect(() => {
     if (!API_BASE_URL) {
-      // 1. لو مفيش لينك، هنستخدم ملف الـ JSON المحلي فوراً
       setComponents(componentsData);
       setIsLoading(false);
     } else {
@@ -41,7 +39,6 @@ export default function Store() {
           }
           if (!Array.isArray(fetchedData)) fetchedData = [];
 
-          // توحيد أسماء البيانات عشان الديزاين يفضل سليم
           const normalizedData = fetchedData.map(item => ({
             ...item,
             image: item.imageUrl || item.image,
