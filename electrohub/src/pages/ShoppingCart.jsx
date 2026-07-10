@@ -6,9 +6,9 @@ function ShoppingCart() {
   const { items, increaseQty, decreaseQty, removeItem } = useCart();
 
   const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  (sum, item) => sum + (Number(item.price) || 0) * (item.quantity || 0),
+  0
+);
   const shipping = items.length > 0 ? 50.0 : 0;
   const taxes = subtotal * 0.14; 
   const total = subtotal + shipping + taxes;
@@ -97,11 +97,9 @@ function ShoppingCart() {
                           <Plus size={12} />
                         </button>
                       </div>
-
                       <div className="font-extrabold text-white text-sm">
-                        EGP {item.price.toFixed(2)}
+                          EGP {Number(item.price || 0).toFixed(2)}
                       </div>
-
                       <div className="flex justify-center">
                         <button
                           onClick={() => removeItem(item.id)}
