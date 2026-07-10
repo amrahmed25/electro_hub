@@ -20,7 +20,6 @@ function ShoppingCart() {
       <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         <Header />
 
-        {/* 🌟 إضافة ستايل الـ Animations الخاص بالظهور البطيء 🌟 */}
         <style>{`
           @keyframes floatUp { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
           .fade-up { animation: floatUp .55s cubic-bezier(.16,1,.3,1) both; }
@@ -29,24 +28,20 @@ function ShoppingCart() {
         <div className="flex-1 overflow-y-auto p-6 mt-16">
           <div className="max-w-[1400px] mx-auto">
             
-            {/* ظهور بطيء للعنوان */}
             <h2 className="fade-up text-3xl font-extrabold mb-8 tracking-wider bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(96,165,250,0.3)]">
               Shopping Cart
             </h2>
 
             <div className="flex flex-col lg:flex-row gap-8 items-start">
               
-              {/* قسم المنتجات (اليسار) */}
               <div className="flex-[3] w-full overflow-x-auto pb-4">
                 <div className="min-w-[800px]">
                   
-                  {/* رأس الجدول بظهور بطيء متأخر شوية */}
                   <div 
                     className="fade-up grid grid-cols-[80px_1fr_150px_150px_100px_90px] items-center gap-2.5 text-center bg-[#0d1323]/80 backdrop-blur-md border border-gray-800/60 rounded-2xl p-4 mb-4 font-bold text-[11px] uppercase tracking-widest text-gray-400 shadow-xl"
                     style={{ animationDelay: "40ms" }}
                   >
                     <div>Product Image</div>
-                    {/* 🌟 التعديل هنا: ضفنا pl-8 عشان نبعد الكلمة عن الصورة 🌟 */}
                     <div className="text-left pl-8">Component</div>
                     <div>Package</div>
                     <div>Quantity</div>
@@ -54,7 +49,6 @@ function ShoppingCart() {
                     <div>Remove</div>
                   </div>
 
-                  {/* المنتجات بظهور متتالي */}
                   {items.map((item, index) => (
                     <div
                       key={item.id}
@@ -73,7 +67,6 @@ function ShoppingCart() {
                         )}
                       </div>
 
-                      {/* 🌟 التعديل هنا: ضفنا pl-8 عشان نبعد تفاصيل المنتج عن الصورة وتبقى محاذية لكلمة Component فوق 🌟 */}
                       <div className="text-left pl-8">
                         <div className="text-sm font-bold text-white line-clamp-1">{item.name}</div>
                         {item.manufacturer && (
@@ -120,7 +113,6 @@ function ShoppingCart() {
                     </div>
                   ))}
 
-                  {/* حالة إن السلة فاضية (Empty State) */}
                   {items.length === 0 && (
                     <div className="fade-up flex flex-col items-center justify-center py-16 bg-[#0d1323]/40 backdrop-blur-md border border-gray-800/60 rounded-2xl" style={{ animationDelay: "80ms" }}>
                       <Trash2 size={48} className="text-gray-600 mb-4 opacity-50" />
@@ -131,7 +123,6 @@ function ShoppingCart() {
                 </div>
               </div>
 
-              {/* ملخص الطلب بظهور بطيء (اليمين) */}
               <div 
                 className="fade-up flex-1 w-full lg:min-w-[350px] bg-[#0d1323]/60 backdrop-blur-md rounded-2xl border border-gray-800/60 p-6 shadow-2xl lg:sticky lg:top-6 h-fit"
                 style={{ animationDelay: "120ms" }}
