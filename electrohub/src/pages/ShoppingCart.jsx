@@ -1,14 +1,18 @@
+import React, { useState } from "react";
 import Header from "./Header"; 
 import { useCart } from "../CartContext";
-import { Trash2, Minus, Plus } from "lucide-react"; 
+import { Trash2, Minus, Plus, CheckCircle, X } from "lucide-react"; 
 
 function ShoppingCart() {
   const { items, increaseQty, decreaseQty, removeItem } = useCart();
+  
+  // 🌟 الـ State الخاصة بإظهار وإخفاء نافذة التأكيد 🌟
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const subtotal = items.reduce(
-  (sum, item) => sum + (Number(item.price) || 0) * (item.quantity || 0),
-  0
-);
+    (sum, item) => sum + (Number(item.price) || 0) * (item.quantity || 0),
+    0
+  );
   const shipping = items.length > 0 ? 50.0 : 0;
   const taxes = subtotal * 0.14; 
   const total = subtotal + shipping + taxes;
@@ -16,6 +20,39 @@ function ShoppingCart() {
   return (
     <div className="min-h-screen bg-[url('/images/bg-circuit.jpg')] bg-cover bg-fixed bg-center relative font-sans text-gray-200">
       <div className="absolute inset-0 bg-[#070b14]/50 z-0"></div>
+
+      {/* ================= نافذة تأكيد الطلب (Success Modal) ================= */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm fade-up">
+          <div className="bg-[#0d1323] border border-gray-800 rounded-2xl p-6 max-w-md w-full text-center shadow-2xl relative">
+            
+            <button 
+              onClick={() => setShowSuccessModal(false)} 
+              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="flex justify-center mb-4">
+              <CheckCircle size={56} className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]" />
+            </div>
+            
+            <h3 className="text-xl font-bold text-white mb-2">Order Received!</h3>
+            
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+              Your order has been successfully placed. We will send an email shortly with your delivery details and tracking information.
+            </p>
+            
+            <button 
+              onClick={() => setShowSuccessModal(false)} 
+              className="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 rounded-xl transition-all border border-gray-700 shadow-md"
+            >
+              Got it, Thanks!
+            </button>
+            
+          </div>
+        </div>
+      )}
 
       <div className="relative z-10 flex flex-col h-screen overflow-hidden">
         <Header />
@@ -149,6 +186,8 @@ function ShoppingCart() {
 
                 <button 
                   disabled={items.length === 0}
+                  // 🌟 ربطنا الزرار بالـ Modal هنا 🌟
+                  onClick={() => setShowSuccessModal(true)}
                   className="w-full py-3.5 rounded-xl font-bold transition-all h-12 flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(37,99,235,0.2)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Proceed to Checkout
